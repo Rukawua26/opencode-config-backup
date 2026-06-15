@@ -1,0 +1,16 @@
+{
+  "jobs": [
+    {
+      "name": "Weekly GitHub review",
+      "prompt": "Revisa mis issues de GitHub abiertos y dame un resumen ejecutivo",
+      "interval_minutes": 10080,
+      "timeout_seconds": 180
+    },
+    {
+      "name": "Server health check",
+      "prompt": "Verifica el estado de los servicios en producción",
+      "interval_minutes": 60,
+      "timeout_seconds": 60
+    }
+  ]
+}
