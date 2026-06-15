@@ -1,38 +1,56 @@
 [
   {
-    "id": "t1781223870690_1",
-    "title": "Test kanban",
-    "description": "",
+    "id": "t1781558770862_1",
+    "title": "VozArt: Mejorar selectores de AI provider",
+    "description": "VozArt tiene abstracción multi-provider en server/ai/. Revisar integración y añadir tests para cada provider (Gemini, OpenAI, Anthropic, Ollama)",
     "priority": "high",
-    "status": "done",
-    "created": "2026-06-12T00:24:30.690Z",
-    "updated": "2026-06-12T00:32:30.640Z"
+    "status": "todo",
+    "created": "2026-06-15T21:26:10.862Z",
+    "updated": "2026-06-15T21:26:10.862Z"
   },
   {
-    "id": "t1781224075642_1",
-    "title": "Refinar documentación de plugins",
-    "description": "",
+    "id": "t1781558771713_2",
+    "title": "OSIRIS: Revisar estabilidad del mapa 3D",
+    "description": "OSIRIS usa MapLibre GL con 20+ capas de datos. Verificar rendimiento y memory leaks en la visualización 3D",
     "priority": "medium",
-    "status": "done",
-    "created": "2026-06-12T00:27:55.642Z",
-    "updated": "2026-06-14T15:00:03.792Z"
+    "status": "todo",
+    "created": "2026-06-15T21:26:11.713Z",
+    "updated": "2026-06-15T21:26:11.713Z"
   },
   {
-    "id": "t1781224186943_1",
-    "title": "Probar integración final",
-    "description": "",
+    "id": "t1781558772457_3",
+    "title": "Nuclear: Explorar plugins SDK",
+    "description": "Nuclear tiene un SDK de plugins. Documentar cómo crear plugins y examples de integración",
     "priority": "low",
-    "status": "done",
-    "created": "2026-06-12T00:29:46.943Z",
-    "updated": "2026-06-14T15:00:04.296Z"
+    "status": "todo",
+    "created": "2026-06-15T21:26:12.457Z",
+    "updated": "2026-06-15T21:26:12.457Z"
   },
   {
-    "id": "t1781271678963_1",
-    "title": "Verificación post-Hermes",
-    "description": "",
+    "id": "t1781558773310_4",
+    "title": "OpenCode: Mejorar SOUL.md con instrucciones detalladas",
+    "description": "Refinar el archivo de personalidad SOUL.md con preferencias específicas de flujo de trabajo, tono, y comportamiento",
     "priority": "medium",
-    "status": "done",
-    "created": "2026-06-12T13:41:18.963Z",
-    "updated": "2026-06-14T15:00:09.465Z"
+    "status": "todo",
+    "created": "2026-06-15T21:26:13.310Z",
+    "updated": "2026-06-15T21:26:13.310Z"
+  },
+  {
+    "id": "t1781558774372_5",
+    "title": "VozArt: Añadir modo offline/local",
+    "description": "VozArt tiene un \"modo local\" esbozado. Implementar detección offline, cola de operaciones y sincronización cuando vuelva la conexión",
+    "priority": "medium",
+    "status": "todo",
+    "created": "2026-06-15T21:26:14.372Z",
+    "updated": "2026-06-15T21:26:14.372Z"
+  },
+  {
+    "id": "t1781558775058_6",
+    "title": "Sistema: Migrar más APIs a OpenCode",
+    "description": "Configurar API keys de OpenAI y Anthropic para tener todos los providers disponibles en OpenCode",
+    "priority": "low",
+    "status": "todo",
+    "created": "2026-06-15T21:26:15.058Z",
+    "updated": "2026-06-15T21:26:15.058Z"
   }
 ]
