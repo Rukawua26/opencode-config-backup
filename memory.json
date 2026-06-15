@@ -1,0 +1,41 @@
+{
+  "user": [
+    {
+      "id": "m1781221000608_1",
+      "content": "Usuario: miguel. Stack técnico: TypeScript, React, Node.js",
+      "source": "agent",
+      "created": "2026-06-11T23:36:40.608Z",
+      "accessed": "2026-06-12T00:31:01.818Z"
+    },
+    {
+      "id": "m1781224186700_1",
+      "content": "Usuario actual es miguel",
+      "source": "agent",
+      "created": "2026-06-12T00:29:46.700Z",
+      "accessed": "2026-06-12T00:31:01.818Z"
+    }
+  ],
+  "memory": [
+    {
+      "id": "m1781223817433_1",
+      "content": "Prueba de memoria funcional OK",
+      "source": "agent",
+      "created": "2026-06-12T00:23:37.433Z",
+      "accessed": "2026-06-12T00:23:37.433Z"
+    },
+    {
+      "id": "m1781271679016_1",
+      "content": "verificación post-Hermes OK - OpenCode funciona standalone",
+      "source": "agent",
+      "created": "2026-06-12T13:41:19.016Z",
+      "accessed": "2026-06-12T13:43:06.022Z"
+    },
+    {
+      "id": "m1781458913374_1",
+      "content": "VozArt project: React 19 + Vite 6 + Fabric.js 7 + Express + WebSockets. AI providers abstraction in server/ai/ (Gemini, OpenAI, Anthropic, Ollama). Build: npm run build -> vite build + esbuild server.ts. Multi-provider AI selector in VoiceControl sidebar.",
+      "source": "agent",
+      "created": "2026-06-14T17:41:53.374Z",
+      "accessed": "2026-06-14T17:41:53.374Z"
+    }
+  ]
+}

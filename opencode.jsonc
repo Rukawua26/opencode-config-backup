@@ -20,7 +20,7 @@
   "mcp": {
     "cheap-llm": {
       "type": "local",
-      "command": ["node", "__HOME__/.config/opencode/mcp/cheap-llm.js"],
+      "command": ["node", "/home/miguel/.config/opencode/mcp/cheap-llm.js"],
       "enabled": true
     }
   }

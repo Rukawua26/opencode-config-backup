@@ -1,0 +1,38 @@
+[
+  {
+    "id": "t1781223870690_1",
+    "title": "Test kanban",
+    "description": "",
+    "priority": "high",
+    "status": "done",
+    "created": "2026-06-12T00:24:30.690Z",
+    "updated": "2026-06-12T00:32:30.640Z"
+  },
+  {
+    "id": "t1781224075642_1",
+    "title": "Refinar documentación de plugins",
+    "description": "",
+    "priority": "medium",
+    "status": "done",
+    "created": "2026-06-12T00:27:55.642Z",
+    "updated": "2026-06-14T15:00:03.792Z"
+  },
+  {
+    "id": "t1781224186943_1",
+    "title": "Probar integración final",
+    "description": "",
+    "priority": "low",
+    "status": "done",
+    "created": "2026-06-12T00:29:46.943Z",
+    "updated": "2026-06-14T15:00:04.296Z"
+  },
+  {
+    "id": "t1781271678963_1",
+    "title": "Verificación post-Hermes",
+    "description": "",
+    "priority": "medium",
+    "status": "done",
+    "created": "2026-06-12T13:41:18.963Z",
+    "updated": "2026-06-14T15:00:09.465Z"
+  }
+]
