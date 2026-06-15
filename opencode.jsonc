@@ -2,7 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "compaction": {
     "auto": true,
-    "tail_turns": 15
+    "prune": true,
+    "tail_turns": 4
   },
   "tool_output": {
     "max_lines": 100,

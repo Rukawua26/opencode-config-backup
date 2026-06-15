@@ -24,8 +24,10 @@ Backup portable de mi configuracion de OpenCode para poder restaurarla rapido en
 
 ## Por que esta configuracion ahorra tokens
 
-- `compaction.auto` mantiene el contexto mas corto.
-- `tail_turns: 15` evita arrastrar demasiado historial.
+- `compaction.auto` compacta el contexto cuando crece demasiado.
+- `tail_turns` controla cuantos turnos recientes se conservan verbatim durante la compactacion.
+- Usar `tail_turns: 4` en global y `work`, y `tail_turns: 3` en `personal`, reduce contexto crudo repetido sin perder demasiada continuidad.
+- `prune: true` elimina outputs viejos de herramientas durante la compactacion y reduce ruido en sesiones largas.
 - `cheap-llm` mueve tareas baratas como resumen a `gemini-2.5-flash-lite`.
 - Los plugins de memoria y checkpoints ayudan a reutilizar contexto y evitar trabajo repetido.
 - Los perfiles separan uso normal y uso economico.
@@ -84,8 +86,8 @@ Backup portable de mi configuracion de OpenCode para poder restaurarla rapido en
 
 ### Perfiles
 
-- `work`: perfil principal con plugins de memoria, personalidad, guardrails, checkpoints y kanban.
-- `personal`: perfil ligero con menos plugins.
+- `work`: perfil principal con plugins de memoria, personalidad, guardrails, checkpoints y kanban, con `tail_turns: 4` y `prune: true`.
+- `personal`: perfil ligero con menos plugins, con `tail_turns: 3` y `prune: true` para priorizar ahorro.
 
 ## Comandos utiles
 
