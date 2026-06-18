@@ -9,6 +9,9 @@
     "max_lines": 100,
     "max_bytes": 4096
   },
+  "skills": {
+    "paths": ["/home/miguel/opencode-custom/skills"]
+  },
   "plugin": [
     "./plugins/memory.js",
     "./plugins/personalities.js",
