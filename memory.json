@@ -36,6 +36,13 @@
       "source": "agent",
       "created": "2026-06-14T17:41:53.374Z",
       "accessed": "2026-06-14T17:41:53.374Z"
+    },
+    {
+      "id": "m1781900892172_1",
+      "content": "VozArt APK install issue: use separate dev applicationId com.vozartdev.app / appName VozArt Dev for test APKs to avoid signature/update conflicts with installed VozArtBeta-v1.2.0. Keep future test APKs side-by-side instead of updating com.vozartbeta.app.",
+      "source": "agent",
+      "created": "2026-06-19T20:28:12.172Z",
+      "accessed": "2026-06-19T20:28:12.172Z"
     }
   ]
 }
