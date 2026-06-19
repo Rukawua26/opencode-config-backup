@@ -58,8 +58,8 @@
     "title": "Respaldar configuración OpenCode",
     "description": "Ejecutar ~/tools/backup-opencode-config.sh para respaldar la configuración de OpenCode en el repo opencode-config-backup.",
     "priority": "medium",
-    "status": "todo",
+    "status": "done",
     "created": "2026-06-18T21:45:53.507Z",
-    "updated": "2026-06-18T21:45:53.508Z"
+    "updated": "2026-06-18T21:46:03.123Z"
   }
 ]
