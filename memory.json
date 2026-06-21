@@ -43,6 +43,20 @@
       "source": "agent",
       "created": "2026-06-19T20:28:12.172Z",
       "accessed": "2026-06-19T20:28:12.172Z"
+    },
+    {
+      "id": "m1781999901783_1",
+      "content": "En Pbot-V5ARCH-DEV-clean, la fuente de verdad para mejoras pendientes es docs/roadmap/mejoras-pendientes.md; cuando el usuario pregunte por mejoras pendientes, leer ese archivo antes de responder.",
+      "source": "agent",
+      "created": "2026-06-20T23:58:21.783Z",
+      "accessed": "2026-06-20T23:58:21.783Z"
+    },
+    {
+      "id": "m1782000182864_2",
+      "content": "En Pbot-V5ARCH-DEV-clean, antes de tocar código revisar docs/engineering/memoria-tecnica.md; es la fuente versionada de cambios críticos, decisiones, invariantes y regresiones prevenidas.",
+      "source": "agent",
+      "created": "2026-06-21T00:03:02.864Z",
+      "accessed": "2026-06-21T00:03:02.865Z"
     }
   ]
 }
