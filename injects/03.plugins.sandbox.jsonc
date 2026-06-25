@@ -1,0 +1,7 @@
+// Inyectar plugin sandbox (ejecución aislada en Docker)
+// Aplicar: opencode-inject apply plugins.sandbox
+{
+  "plugin": [
+    "/home/miguel/.config/opencode/plugins/sandbox.js"
+  ]
+}

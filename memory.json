@@ -57,6 +57,13 @@
       "source": "agent",
       "created": "2026-06-21T00:03:02.864Z",
       "accessed": "2026-06-21T00:03:02.865Z"
+    },
+    {
+      "id": "m1782337462378_1",
+      "content": "Skills de auditoría creados: audit-pbot (trading bot, 56 líneas) y audit-vozart (React+AI, 61 líneas) en opencode-custom/skills/. Uso: @audit-pbot o @audit-vozart. Ambos bajo demanda, sin costo fijo en tokens.",
+      "source": "agent",
+      "created": "2026-06-24T21:44:22.378Z",
+      "accessed": "2026-06-24T21:44:22.378Z"
     }
   ]
 }

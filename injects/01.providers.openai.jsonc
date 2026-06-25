@@ -1,0 +1,6 @@
+// Inyectar proveedor OpenAI
+// Condición: tener OPENAI_API_KEY en ~/.config/opencode/.env
+// Aplicar: opencode-inject apply providers.openai
+{
+  "model": "openai/gpt-4o-mini"
+}

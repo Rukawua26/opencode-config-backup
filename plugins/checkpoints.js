@@ -1,11 +1,14 @@
-import { existsSync, mkdirSync, copyFileSync, readdirSync, rmSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { existsSync, mkdirSync, copyFileSync, readdirSync, rmSync, cpSync } from 'node:fs';
+import { join, resolve, dirname } from 'node:path';
 import { tool } from "@opencode-ai/plugin";
 
 const HOME = process.env.HOME || process.env.USERPROFILE || '/tmp';
 const CHECKPOINT_DIR = join(HOME, '.local/share/opencode/plugins-data/checkpoints');
+const CONFIG_BACKUP_DIR = join(HOME, '.local/share/opencode/config-backups');
 const MAX_SNAPSHOTS = 10;
+const MAX_CONFIG_BACKUPS = 10;
 const SKIP_PATTERNS = [/node_modules/, /\.git\//, /\.local\/share\/opencode\/plugins-data/];
+const OPENTCODE_CONFIG_DIR = join(HOME, '.config/opencode');
 
 function isSkippable(absPath) {
   return SKIP_PATTERNS.some(p => p.test(absPath));
@@ -59,14 +62,34 @@ function extractFilePaths(args) {
   return paths;
 }
 
+function snapshotConfigFull() {
+  if (!existsSync(OPENTCODE_CONFIG_DIR)) return;
+  ensureDir(CONFIG_BACKUP_DIR);
+
+  const ts = Date.now();
+  const backupDir = join(CONFIG_BACKUP_DIR, `opencode-${ts}`);
+  cpSync(OPENTCODE_CONFIG_DIR, backupDir, { recursive: true, filter: (src) => !SKIP_PATTERNS.some(p => p.test(src)) });
+
+  const backups = readdirSync(CONFIG_BACKUP_DIR)
+    .filter(f => f.startsWith('opencode-'))
+    .sort()
+    .reverse();
+
+  while (backups.length > MAX_CONFIG_BACKUPS) {
+    rmSync(join(CONFIG_BACKUP_DIR, backups.pop()), { recursive: true, force: true });
+  }
+}
+
 export const checkpointsPlugin = async () => {
   ensureDir(CHECKPOINT_DIR);
+  ensureDir(CONFIG_BACKUP_DIR);
 
   return {
     "tool.execute.before": async (input, output) => {
       if (input.tool === 'edit' || input.tool === 'write' || input.tool === 'patch') {
         const paths = extractFilePaths(output.args);
         for (const p of paths) {
+          if (p.startsWith(OPENTCODE_CONFIG_DIR)) snapshotConfigFull();
           snapshotFile(p);
         }
       }
@@ -74,6 +97,7 @@ export const checkpointsPlugin = async () => {
 
     "file.edited": async (input) => {
       if (input?.filePath) {
+        if (input.filePath.startsWith(OPENTCODE_CONFIG_DIR)) snapshotConfigFull();
         snapshotFile(input.filePath);
       }
     },
