@@ -19,6 +19,7 @@
   },
   "plugin": [
     "./plugins/memory.js",
+    "./plugins/memory-v2.js",
     "./plugins/personalities.js",
     "./plugins/guardrails.js",
     "./plugins/checkpoints.js",
@@ -30,6 +31,11 @@
     "cheap-llm": {
       "type": "local",
       "command": ["node", "/home/miguel/.config/opencode/mcp/cheap-llm.js"],
+      "enabled": true
+    },
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp@latest"],
       "enabled": true
     }
   }

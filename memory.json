@@ -64,6 +64,76 @@
       "source": "agent",
       "created": "2026-06-24T21:44:22.378Z",
       "accessed": "2026-06-24T21:44:22.378Z"
+    },
+    {
+      "id": "m1782502872190_1",
+      "content": "OpenCode SDD: specs are project-local in each repo's spec/ directory, never global. Commands added: /spec, /plan-spec, /tasks-spec, /implement-spec, /verify-spec. Skills added: sdd-specify, sdd-plan, sdd-tasks, sdd-implement.",
+      "source": "agent",
+      "created": "2026-06-26T19:41:12.190Z",
+      "accessed": "2026-06-26T19:41:12.190Z"
+    },
+    {
+      "id": "m1782503665171_1",
+      "content": "SDD project-local structure created in: ~/vozart, ~/Pbot-V5ARCH-DEV-main, ~/osiris, ~/nuclear, ~/agency-agents, ~/opencode-custom. Each has spec/constitution/{mission,tech-stack,working-agreement,roadmap}.md and spec/features/README.md.",
+      "source": "agent",
+      "created": "2026-06-26T19:54:25.171Z",
+      "accessed": "2026-06-26T19:54:25.172Z"
+    },
+    {
+      "id": "m1782504533341_2",
+      "content": "VozArt first SDD feature completed: spec/features/001-timestamp-historial adds optional AppCommand timestamp, timestamps addCommand entries, and shows AI_ACTION+ERROR history with time/status. Verification passed: npm run lint, npm run build, npm test.",
+      "source": "agent",
+      "created": "2026-06-26T20:08:53.341Z",
+      "accessed": "2026-06-26T20:08:53.341Z"
+    },
+    {
+      "id": "m1782505121843_3",
+      "content": "OpenCode SDD Pilar 1 reinforced: sdd-specify requires Limites de Contexto and Fuentes de Verdad; sdd-plan requires Verificacion Contra Alucinaciones; sdd-implement and /implement-spec require anti-hallucination checks before completing tasks and recording evidence in verify.md.",
+      "source": "agent",
+      "created": "2026-06-26T20:18:41.843Z",
+      "accessed": "2026-06-26T20:18:41.843Z"
+    },
+    {
+      "id": "m1782506025436_4",
+      "content": "Pbot SDD feature completed: spec/features/001-satellite-notifier extends existing tools/notifier.py with SatelliteNotifier callback API and integrates optional notifier into FvgTracker for fvg.gap_detected events. Verified with targeted unittest (52 tests) and compileall.",
+      "source": "agent",
+      "created": "2026-06-26T20:33:45.436Z",
+      "accessed": "2026-06-26T20:33:45.436Z"
+    },
+    {
+      "id": "m1782509946805_5",
+      "content": "Pbot 001-satellite-notifier maximum verification passed: pip check, compileall, ruff check/format, mypy, smoke imports, no silent pass, regression contracts, chaos 8/8, recovery 3/3, full unittest 1017 tests/2 skipped, docker build.",
+      "source": "agent",
+      "created": "2026-06-26T21:39:06.805Z",
+      "accessed": "2026-06-26T21:39:06.805Z"
+    },
+    {
+      "id": "m1782511914968_6",
+      "content": "All project-local SDD tech-stack.md files reinforced with full template: Tecnologias, Estructura, Arquitectura/Flujo, Convenciones, Comandos, Estilo Visual, Prohibiciones for vozart, Pbot, osiris, nuclear, agency-agents, opencode-custom.",
+      "source": "agent",
+      "created": "2026-06-26T22:11:54.968Z",
+      "accessed": "2026-06-26T22:11:54.968Z"
+    },
+    {
+      "id": "m1782513039057_7",
+      "content": "OpenCode SDD pillars completed: AGENTS.md now documents Rol Del Programador and Estrategia De Contexto Y Modelos; sdd-implement has 3-iteration loop exit rules; sdd-plan requires loop exit conditions in plan.md.",
+      "source": "agent",
+      "created": "2026-06-26T22:30:39.057Z",
+      "accessed": "2026-06-26T22:30:39.057Z"
+    },
+    {
+      "id": "m1782521168243_1",
+      "content": "OpenCode AI engineering plan implemented: loop-engineering/TDD integration, memory-v2 engram plugin registered, multiagent orchestration docs, harness trigger skills, API docs resolver, code-reviewer-v2, spec-as-source, and Spec-Anchored level marked in 6 tech-stack.md files.",
+      "source": "agent",
+      "created": "2026-06-27T00:46:08.243Z",
+      "accessed": "2026-06-27T00:46:08.243Z"
+    },
+    {
+      "id": "m1782526452335_2",
+      "content": "OpenCode advanced harness completed: Context7 MCP registered, harness-trigger skill added for skill activation map, memory-v2 migrated to SQLite/FTS5 with better-sqlite3 dependency in ~/.config/opencode, tools memory_signal/memory_search_v2/memory_context verified.",
+      "source": "agent",
+      "created": "2026-06-27T02:14:12.335Z",
+      "accessed": "2026-06-27T02:14:12.335Z"
     }
   ]
 }
