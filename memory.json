@@ -73,13 +73,6 @@
       "accessed": "2026-06-26T19:41:12.190Z"
     },
     {
-      "id": "m1782503665171_1",
-      "content": "SDD project-local structure created in: ~/vozart, ~/Pbot-V5ARCH-DEV-main, ~/osiris, ~/nuclear, ~/agency-agents, ~/opencode-custom. Each has spec/constitution/{mission,tech-stack,working-agreement,roadmap}.md and spec/features/README.md.",
-      "source": "agent",
-      "created": "2026-06-26T19:54:25.171Z",
-      "accessed": "2026-06-26T19:54:25.172Z"
-    },
-    {
       "id": "m1782504533341_2",
       "content": "VozArt first SDD feature completed: spec/features/001-timestamp-historial adds optional AppCommand timestamp, timestamps addCommand entries, and shows AI_ACTION+ERROR history with time/status. Verification passed: npm run lint, npm run build, npm test.",
       "source": "agent",
@@ -108,13 +101,6 @@
       "accessed": "2026-06-26T21:39:06.805Z"
     },
     {
-      "id": "m1782511914968_6",
-      "content": "All project-local SDD tech-stack.md files reinforced with full template: Tecnologias, Estructura, Arquitectura/Flujo, Convenciones, Comandos, Estilo Visual, Prohibiciones for vozart, Pbot, osiris, nuclear, agency-agents, opencode-custom.",
-      "source": "agent",
-      "created": "2026-06-26T22:11:54.968Z",
-      "accessed": "2026-06-26T22:11:54.968Z"
-    },
-    {
       "id": "m1782513039057_7",
       "content": "OpenCode SDD pillars completed: AGENTS.md now documents Rol Del Programador and Estrategia De Contexto Y Modelos; sdd-implement has 3-iteration loop exit rules; sdd-plan requires loop exit conditions in plan.md.",
       "source": "agent",
@@ -134,6 +120,20 @@
       "source": "agent",
       "created": "2026-06-27T02:14:12.335Z",
       "accessed": "2026-06-27T02:14:12.335Z"
+    },
+    {
+      "id": "m1782676207275_1",
+      "content": "Osiris y Nuclear eliminados del sistema (jun 2026). Limpiados: directorios, summaries, repo-map.json, docs/areas, _MOC.md, plugins runtime y memoria persistente.",
+      "source": "agent",
+      "created": "2026-06-28T19:50:07.275Z",
+      "accessed": "2026-06-28T19:50:07.275Z"
+    },
+    {
+      "id": "m1782689909977_1",
+      "content": "OpenSky API configurada con Basic Auth (username: miguel). AISStream API configurada con API key. Archivo .env creado en backend/.env.",
+      "source": "agent",
+      "created": "2026-06-28T23:38:29.977Z",
+      "accessed": "2026-06-28T23:38:29.977Z"
     }
   ]
 }
