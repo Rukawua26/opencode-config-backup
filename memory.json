@@ -134,6 +134,34 @@
       "source": "agent",
       "created": "2026-06-28T23:38:29.977Z",
       "accessed": "2026-06-28T23:38:29.977Z"
+    },
+    {
+      "id": "m1782763096940_1",
+      "content": "Fase 6 implementada: pinceles realistas (OilBrush, WatercolorBrush, CharcoalBrush, EnhancedSprayBrush), presión stylus vía PointerEvent, 9 modos de fusión en free drawing, export JPG, importar imagen de referencia, HARMONIZE_STROKE y STORY_SCENE acciones IA, modo Historia en UI. Faltan: smudge tool, modo lectura fácil, modo auto/manual, snapping.",
+      "source": "agent",
+      "created": "2026-06-29T19:58:16.940Z",
+      "accessed": "2026-06-29T19:58:16.940Z"
+    },
+    {
+      "id": "m1782763406957_2",
+      "content": "Proyecto VozArt 100% completo según documento visión. Todas las fases implementadas: pinceles realistas (Oil/Watercolor/Charcoal/Spray+Smudge), presión stylus, 9 modos de fusión, HARMONIZE_STROKE/STORY_SCENE IA, modo Historia, importar referencia, export JPG, snapping guías, modo manual/auto, modo lectura fácil. Pendiente: migración a nube (no en visión original).",
+      "source": "agent",
+      "created": "2026-06-29T20:03:26.957Z",
+      "accessed": "2026-06-29T20:03:26.957Z"
+    },
+    {
+      "id": "m1782763986205_1",
+      "content": "Post-visión roadmap guardado para implementar cuando tenga VPS/dominio: (1) Persistencia en nube con serverless + cuentas + sync, (2) Colaboración en tiempo real con historial de cambios y multi-user, (3) Accesibilidad profunda con lista semántica y eye tracking avanzado, (4) Collab rooms WebSocket mejorados.",
+      "source": "agent",
+      "created": "2026-06-29T20:13:06.205Z",
+      "accessed": "2026-06-29T20:13:06.205Z"
+    },
+    {
+      "id": "m1782763986722_2",
+      "content": "Usuario prioriza QA y estabilización antes de features cloud. Interesado en VPS/dominio futuro para despliegue server-side.",
+      "source": "agent",
+      "created": "2026-06-29T20:13:06.722Z",
+      "accessed": "2026-06-29T20:13:06.722Z"
     }
   ]
 }
