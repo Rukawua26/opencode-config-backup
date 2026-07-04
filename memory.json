@@ -162,6 +162,13 @@
       "source": "agent",
       "created": "2026-06-29T20:13:06.722Z",
       "accessed": "2026-06-29T20:13:06.722Z"
+    },
+    {
+      "id": "m1783095899656_1",
+      "content": "agent_orchestrator: modelo por perfil implementado. backend/frontend/android usan qwen2.5-coder:3b; design usa gemma4:e2b-it-q4_K_M; trading usa llama3.2. --modelo es override global explícito. Tests: 57 passed.",
+      "source": "agent",
+      "created": "2026-07-03T16:24:59.656Z",
+      "accessed": "2026-07-03T16:24:59.656Z"
     }
   ]
 }
