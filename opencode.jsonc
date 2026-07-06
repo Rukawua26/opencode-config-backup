@@ -37,6 +37,11 @@
       "type": "local",
       "command": ["npx", "-y", "@upstash/context7-mcp@latest"],
       "enabled": true
+    },
+    "diagram-generator": {
+      "type": "local",
+      "command": ["npx", "-y", "mcp-diagram-generator"],
+      "enabled": true
     }
   }
 }
