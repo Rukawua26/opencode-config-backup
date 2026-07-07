@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/marketing/instagram-curator.md
+../agents-library/marketing/instagram-curator.md

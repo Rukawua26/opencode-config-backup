@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/marketing/growth-hacker.md
+../agents-library/marketing/growth-hacker.md

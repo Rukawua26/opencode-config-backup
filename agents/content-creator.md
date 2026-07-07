@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/marketing/content-creator.md
+../agents-library/marketing/content-creator.md

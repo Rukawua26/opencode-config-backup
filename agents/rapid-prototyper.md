@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/rapid-prototyper.md
+../agents-library/engineering/rapid-prototyper.md

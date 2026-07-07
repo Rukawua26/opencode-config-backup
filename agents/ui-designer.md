@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/design/ui-designer.md
+../agents-library/design/ui-designer.md

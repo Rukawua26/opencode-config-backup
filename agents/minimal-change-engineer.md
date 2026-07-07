@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/minimal-change-engineer.md
+../agents-library/engineering/minimal-change-engineer.md

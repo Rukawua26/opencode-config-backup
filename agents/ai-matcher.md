@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/agency-core/ai-matcher.md
+../agents-library/agency-core/ai-matcher.md

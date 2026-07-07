@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/design/visual-storyteller.md
+../agents-library/design/visual-storyteller.md

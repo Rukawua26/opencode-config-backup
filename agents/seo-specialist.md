@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/marketing/seo-specialist.md
+../agents-library/marketing/seo-specialist.md

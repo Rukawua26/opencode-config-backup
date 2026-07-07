@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/support/support-responder.md
+../agents-library/support/support-responder.md

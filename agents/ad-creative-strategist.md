@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/paid-media/ad-creative-strategist.md
+../agents-library/paid-media/ad-creative-strategist.md

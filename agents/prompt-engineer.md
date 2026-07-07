@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/prompt-engineer.md
+../agents-library/engineering/prompt-engineer.md

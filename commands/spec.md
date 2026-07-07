@@ -7,7 +7,7 @@ Input: `$ARGUMENTS`
 Rules:
 
 - Work only in `./spec/` relative to the current project root.
-- Do not create or use `/home/miguel/spec/`.
+- Do not create or use `__HOME__/spec/`.
 - Do not implement code.
 - If the project root is unclear, ask one short clarification question.
 - Create `spec/constitution/` only if missing, with non-invented placeholders where needed.

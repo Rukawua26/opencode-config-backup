@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/marketing/tiktok-strategist.md
+../agents-library/marketing/tiktok-strategist.md

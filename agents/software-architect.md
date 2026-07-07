@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/software-architect.md
+../agents-library/engineering/software-architect.md

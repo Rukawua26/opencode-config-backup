@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/senior-developer.md
+../agents-library/engineering/senior-developer.md

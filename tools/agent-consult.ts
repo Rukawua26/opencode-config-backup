@@ -21,7 +21,7 @@ export default tool({
       path.join(ctx.worktree, "agent_orchestrator", "main.py"),
       path.join(ctx.directory, "main.py"),
       path.join(ctx.directory, "agent_orchestrator", "main.py"),
-      "/home/miguel/Agente proyect/agent_orchestrator/main.py",
+      "__HOME__/Agente proyect/agent_orchestrator/main.py",
     ].find((candidate) => fs.existsSync(candidate))
 
     if (!script) {

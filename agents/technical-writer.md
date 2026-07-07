@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/technical-writer.md
+../agents-library/engineering/technical-writer.md

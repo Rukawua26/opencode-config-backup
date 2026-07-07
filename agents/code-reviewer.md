@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/code-reviewer.md
+../agents-library/engineering/code-reviewer.md

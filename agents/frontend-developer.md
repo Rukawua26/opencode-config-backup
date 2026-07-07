@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/frontend-developer.md
+../agents-library/engineering/frontend-developer.md

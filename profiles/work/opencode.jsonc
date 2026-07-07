@@ -12,11 +12,11 @@
   },
   "tool_output": { "max_lines": 100, "max_bytes": 4096 },
   "plugin": [
-    "/home/miguel/.config/opencode/plugins/memory.js",
-    "/home/miguel/.config/opencode/plugins/personalities.js",
-    "/home/miguel/.config/opencode/plugins/guardrails.js",
-    "/home/miguel/.config/opencode/plugins/checkpoints.js",
-    "/home/miguel/.config/opencode/plugins/kanban.js",
-    "/home/miguel/.config/opencode/plugins/validator.js"
+    "__HOME__/.config/opencode/plugins/memory.js",
+    "__HOME__/.config/opencode/plugins/personalities.js",
+    "__HOME__/.config/opencode/plugins/guardrails.js",
+    "__HOME__/.config/opencode/plugins/checkpoints.js",
+    "__HOME__/.config/opencode/plugins/kanban.js",
+    "__HOME__/.config/opencode/plugins/validator.js"
   ]
 }

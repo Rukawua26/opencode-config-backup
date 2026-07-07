@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/git-workflow-master.md
+../agents-library/engineering/git-workflow-master.md

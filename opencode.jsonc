@@ -15,7 +15,7 @@
     "max_bytes": 4096
   },
   "skills": {
-    "paths": ["/home/miguel/opencode-custom/skills"]
+    "paths": ["__HOME__/opencode-custom/skills"]
   },
   "plugin": [
     "./plugins/memory.js",
@@ -30,7 +30,7 @@
   "mcp": {
     "cheap-llm": {
       "type": "local",
-      "command": ["node", "/home/miguel/.config/opencode/mcp/cheap-llm.js"],
+      "command": ["node", "__HOME__/.config/opencode/mcp/cheap-llm.js"],
       "enabled": true
     },
     "context7": {

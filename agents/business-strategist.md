@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/specialized/business-strategist.md
+../agents-library/specialized/business-strategist.md

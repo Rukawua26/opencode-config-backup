@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/testing/tool-evaluator.md
+../agents-library/testing/tool-evaluator.md

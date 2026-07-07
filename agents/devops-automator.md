@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/devops-automator.md
+../agents-library/engineering/devops-automator.md

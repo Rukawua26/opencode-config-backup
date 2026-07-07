@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/codebase-onboarding-engineer.md
+../agents-library/engineering/codebase-onboarding-engineer.md

@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/design/ux-architect.md
+../agents-library/design/ux-architect.md

@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/security/application-security-engineer.md
+../agents-library/security/application-security-engineer.md

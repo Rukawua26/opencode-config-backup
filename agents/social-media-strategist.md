@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/marketing/social-media-strategist.md
+../agents-library/marketing/social-media-strategist.md

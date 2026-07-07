@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/database-optimizer.md
+../agents-library/engineering/database-optimizer.md

@@ -1,1 +1,1 @@
-/home/miguel/.config/opencode/agents-library/engineering/backend-architect.md
+../agents-library/engineering/backend-architect.md
