@@ -60,6 +60,22 @@ Activa esta skill cuando:
 - Dependencias actualizadas sin vulnerabilidades conocidas
 - No usar librerias deprecadas o sin mantenimiento
 
+### 8. MCP Security (Tool Poisoning + Least Privilege)
+- Metadata de tools sin instrucciones ocultas (HTML comments, zero-width chars, base64)
+- Permisos declarados coinciden con lo que el codigo realmente usa (no wildcards `*`)
+- Sin Unicode deception (homoglyphs, RTL overrides en nombres de parametros)
+- Descripcion del tool coincide con su comportamiento real
+
+### 9. Taint Tracking (flujo de datos peligroso)
+- Input de usuario no llega a exec/eval/subprocess sin sanitizar
+- Variables intermedias no canalizan datos sensibles a sinks externos
+- Credenciales no fluyen hacia outputs de red
+
+### 10. Memory Poisoning
+- Skills/modulos no inyectan contenido persistente entre sesiones
+- Estado del agente no se manipula sin autorizacion
+- Memoria persistente no se usa para persistir reglas de seguridad
+
 ## Formato de Salida
 
 ```
@@ -72,6 +88,9 @@ XSS:         OK / X issues
 Auth:        OK / X issues
 Errors:      OK / X issues
 Deps:        OK / X issues
+MCP:         OK / X issues
+Taint:       OK / X issues
+Memory:      OK / X issues
 
 Issues to fix: (listar con severidad y ubicacion)
 ```

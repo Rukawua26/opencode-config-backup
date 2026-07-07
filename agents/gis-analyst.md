@@ -1,0 +1,1 @@
+../agents-library/gis/gis-analyst.md

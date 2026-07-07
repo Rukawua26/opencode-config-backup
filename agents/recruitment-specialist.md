@@ -1,0 +1,1 @@
+../agents-library/specialized/recruitment-specialist.md

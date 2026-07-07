@@ -1,0 +1,1 @@
+../agents-library/academic/psychologist.md

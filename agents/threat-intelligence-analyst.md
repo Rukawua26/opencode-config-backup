@@ -1,0 +1,1 @@
+../agents-library/security/threat-intelligence-analyst.md

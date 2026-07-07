@@ -1,0 +1,1 @@
+../agents-library/engineering/email-intelligence-engineer.md

@@ -1,0 +1,1 @@
+../agents-library/specialized/model-qa-specialist.md

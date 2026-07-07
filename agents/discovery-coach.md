@@ -1,0 +1,1 @@
+../agents-library/sales/discovery-coach.md

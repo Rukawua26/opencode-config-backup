@@ -1,0 +1,1 @@
+../agents-library/specialized/french-consulting-market-navigator.md

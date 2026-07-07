@@ -1,0 +1,1 @@
+../agents-library/gis/technical-consultant.md

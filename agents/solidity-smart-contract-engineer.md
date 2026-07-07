@@ -1,0 +1,1 @@
+../agents-library/engineering/solidity-smart-contract-engineer.md

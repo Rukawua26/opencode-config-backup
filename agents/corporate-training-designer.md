@@ -1,0 +1,1 @@
+../agents-library/specialized/corporate-training-designer.md

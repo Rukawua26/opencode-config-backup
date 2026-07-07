@@ -1,0 +1,1 @@
+../agents-library/specialized/lsp-index-engineer.md

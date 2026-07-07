@@ -1,0 +1,1 @@
+../agents-library/project-management/senior-project-manager.md

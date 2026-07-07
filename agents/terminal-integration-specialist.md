@@ -1,0 +1,1 @@
+../agents-library/spatial-computing/terminal-integration-specialist.md

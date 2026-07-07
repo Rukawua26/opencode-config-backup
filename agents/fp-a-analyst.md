@@ -1,0 +1,1 @@
+../agents-library/finance/fp-a-analyst.md

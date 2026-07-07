@@ -1,0 +1,1 @@
+../agents-library/spatial-computing/macos-spatial-metal-engineer.md

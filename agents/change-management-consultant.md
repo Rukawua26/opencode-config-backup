@@ -1,0 +1,1 @@
+../agents-library/specialized/change-management-consultant.md

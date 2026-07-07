@@ -1,0 +1,1 @@
+../agents-library/specialized/pricing-analyst.md

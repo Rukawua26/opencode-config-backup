@@ -1,0 +1,1 @@
+../agents-library/sales/offer-lead-gen-strategist.md

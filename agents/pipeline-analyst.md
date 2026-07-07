@@ -1,0 +1,1 @@
+../agents-library/sales/pipeline-analyst.md
