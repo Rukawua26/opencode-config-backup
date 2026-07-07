@@ -36,15 +36,34 @@ Reportar warnings y errores.
 ```
 Si hay test runner configurado, ejecutar tests.
 Reportar: pasados / fallados / total / cobertura si existe.
+Si cobertura disponible, reportar tendencia vs ultima ejecucion.
 ```
 
-### 6. Seguridad Basica
+### 6. Auditoria de Dependencias
+```
+Si existe package.json: npm audit --audit-level=critical
+Si existe requirements.txt o pyproject.toml: pip-audit si disponible
+Si vulnerabilidades CRITICAL encontradas: reportar con severidad y remediacion.
+Si solo LOW/MODERATE: reportar como INFO (no bloquea).
+```
+
+### 7. Accesibilidad Estatica
+```
+Solo si el diff contiene .tsx, .jsx, .html o .css:
+- Buscar <div> sin role semantico donde aplica
+- Buscar <img> sin alt
+- Buscar onClick sin onKeyDown equivalente
+- Buscar color contrast definido inline (flags para revision manual)
+Usar skill accessibility-audit si los cambios son frontend significativos.
+```
+
+### 8. Seguridad Basica
 ```
 Buscar secretos hardcodeados en archivos fuente.
 Buscar console.log en src/.
 ```
 
-### 7. Diff Review
+### 9. Diff Review
 ```
 git diff --stat
 Revisar archivos modificados buscando cambios no intencionados.
@@ -59,6 +78,8 @@ Build:    OK/FAIL
 Types:    OK / X errors
 Lint:     OK / X issues
 Tests:    X/Y passed (Z% coverage)
+Deps:     OK / X critical vulns
+A11y:     OK / X issues (SKIP si no frontend)
 Secrets:  OK / X encontrados
 Logs:     OK / X console.logs
 

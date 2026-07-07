@@ -31,6 +31,7 @@ No cargues todas las skills. Elige la minima skill que reduce riesgo para la tar
 
 - Usa `frontend-design` para diseño visual, dashboard, UI distintiva, accesibilidad o responsive.
 - Usa `frontend-patterns-react19` para React 19, Vite, hooks o patrones frontend del stack.
+- Usa `accessibility-audit` cuando el diff contenga `.tsx`, `.jsx`, `.html` o `.css` en cambios de UI.
 
 ### Backend / APIs
 
@@ -42,6 +43,7 @@ No cargues todas las skills. Elige la minima skill que reduce riesgo para la tar
 
 - Usa `debug-bugs` para errores intermitentes, race conditions o tracebacks complejos.
 - Usa `code-reviewer-v2` cuando el usuario pida review o el cambio toque runtime critico.
+- Usa `accessibility-audit` cuando el cambio incluya componentes UI o templates.
 
 ### Multiagentes
 

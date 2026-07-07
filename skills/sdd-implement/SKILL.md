@@ -98,6 +98,7 @@ Antes de marcar una tarea como completa:
 
 - Ejecuta checks definidos en `plan.md`.
 - Usa la skill `verification-loop` para verificacion completa cuando aplique.
+- Si el diff contiene `.tsx`, `.jsx`, `.html` o `.css`, incluye `accessibility-audit` como paso condicional.
 - Registra resultado en `spec/features/<feature>/verify.md`.
 - Incluye una seccion `Verificacion Anti-Alucinacion` en `verify.md` con evidencia de que los cambios coinciden con archivos reales y criterios de aceptacion.
 
@@ -116,6 +117,22 @@ Antes de cerrar, lanza un subagente revisor via Task tool con contexto limpio:
 - **Si hay findings HIGH**: decidir si corregir o documentar como riesgo residual
 - Registrar resultado en `verify.md` bajo seccion `Cross-Review Findings`
 - Si la feature tiene 3+ capas, escala a multi-agent con rol Verificador dedicado
+
+### 3.6 Reality-Check Gate
+
+Evaluar resultados de verification-loop + cross-review:
+
+- **Si todo PASS + sin CRITICAL findings + sin HIGH blockers**: AUTO-APPROVE. Humano no interviene.
+- **Si CRITICAL findings**: PAUSAR. Corregir, re-ejecutar verificacion y cross-review.
+- **Si HIGH findings sin CRITICAL**: Documentar en `verify.md` como riesgo residual. Dejar decision final para humano en PR.
+- **Si WARN/INFO findings**: No bloquean. Documentar como observaciones.
+
+Registrar decision en `verify.md` bajo seccion `Reality-Check`:
+```
+REALITY-CHECK: AUTO-APPROVED / NEEDS HUMAN
+Reason: ...
+Findings: X CRITICAL / Y HIGH / Z WARN
+```
 
 ### 4. Cerrar
 
