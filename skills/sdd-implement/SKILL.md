@@ -101,6 +101,22 @@ Antes de marcar una tarea como completa:
 - Registra resultado en `spec/features/<feature>/verify.md`.
 - Incluye una seccion `Verificacion Anti-Alucinacion` en `verify.md` con evidencia de que los cambios coinciden con archivos reales y criterios de aceptacion.
 
+### 3.5 Cross-Review via Subagente
+
+Antes de cerrar, lanza un subagente revisor via Task tool con contexto limpio:
+
+- **Skill**: code-reviewer-v2
+- **Contexto minimo del subagente**:
+  - `git diff` de los cambios actuales
+  - `spec.md`, `plan.md`, `tasks.md` de la feature
+  - Stack del proyecto (`tech-stack.md`)
+- El subagente NO recibe informacion de como se implemento (contexto aislado)
+- Devuelve findings ordenados por leverage (impacto ÷ esfuerzo × confianza)
+- **Si hay findings CRITICAL**: corregir antes de cerrar, repetir cross-review
+- **Si hay findings HIGH**: decidir si corregir o documentar como riesgo residual
+- Registrar resultado en `verify.md` bajo seccion `Cross-Review Findings`
+- Si la feature tiene 3+ capas, escala a multi-agent con rol Verificador dedicado
+
 ### 4. Cerrar
 
 - Resume archivos modificados.

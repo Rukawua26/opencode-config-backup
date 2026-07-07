@@ -5,6 +5,8 @@ Orquesta subagentes especializados solo cuando el aislamiento de contexto reduce
 ## Cuando Usar
 
 - Feature que cruza 3+ capas: frontend, backend, datos, infra o runtime critico.
+- Cambio que introduce logica de negocio nueva en cualquier capa.
+- Modificacion de contratos publicos, schemas de datos o logica transaccional.
 - Revision independiente de cambios sensibles.
 - Investigacion amplia que conviene aislar del hilo principal.
 
