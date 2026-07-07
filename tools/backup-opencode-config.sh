@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BACKUP_REPO="${HOME}/opencode-config-backup"
+CONFIG_DIR="${HOME}/.config/opencode"
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+
+if [ ! -d "${BACKUP_REPO}/.git" ]; then
+  echo "[${TIMESTAMP}] ERROR: ${BACKUP_REPO} no es un repo git"
+  exit 1
+fi
+
+cd "${BACKUP_REPO}"
+
+git pull --rebase --autostash origin main 2>/dev/null || true
+
+# Sync config files using cp + rm (no rsync needed)
+for item in "${CONFIG_DIR}"/*; do
+  name=$(basename "${item}")
+  case "${name}" in
+    .env|.env.example|node_modules) continue ;;
+  esac
+  cp -r "${item}" "${BACKUP_REPO}/" 2>/dev/null || true
+done
+
+# Clean files in backup that no longer exist in source
+for item in "${BACKUP_REPO}"/*; do
+  name=$(basename "${item}")
+  case "${name}" in
+    .git|.gitignore|README.md|install.sh|package-lock.json|package.json|memory.json|kanban.json|.env.example) continue ;;
+  esac
+  if [ ! -e "${CONFIG_DIR}/${name}" ]; then
+    rm -rf "${item}"
+  fi
+done
+
+# Sync skills from opencode-custom
+SKILLS_SRC="${HOME}/opencode-custom/skills"
+if [ -d "${SKILLS_SRC}" ]; then
+  rm -rf "${BACKUP_REPO}/skills" 2>/dev/null || true
+  cp -r "${SKILLS_SRC}" "${BACKUP_REPO}/skills"
+fi
+
+# Sync AGENTS.md from home root
+AGENTS_SRC="${HOME}/AGENTS.md"
+if [ -f "${AGENTS_SRC}" ]; then
+  cp "${AGENTS_SRC}" "${BACKUP_REPO}/AGENTS.md" 2>/dev/null || true
+fi
+
+cp "${HOME}/.local/share/opencode/plugins-data/memory.json" "${BACKUP_REPO}/memory.json" 2>/dev/null || true
+cp "${HOME}/.local/share/opencode/plugins-data/kanban.json" "${BACKUP_REPO}/kanban.json" 2>/dev/null || true
+
+# Sync tools directory
+TOOLS_SRC="${HOME}/tools"
+if [ -d "${TOOLS_SRC}" ]; then
+  rm -rf "${BACKUP_REPO}/tools" 2>/dev/null || true
+  cp -r "${TOOLS_SRC}" "${BACKUP_REPO}/tools"
+fi
+
+# Sync spec/constitution
+CONSTITUTION_SRC="${HOME}/opencode-custom/spec"
+if [ -d "${CONSTITUTION_SRC}" ]; then
+  rm -rf "${BACKUP_REPO}/spec" 2>/dev/null || true
+  cp -r "${CONSTITUTION_SRC}" "${BACKUP_REPO}/spec"
+fi
+
+# Restaurar portabilidad: __HOME__ en archivos con rutas absolutas
+for file in "${BACKUP_REPO}/opencode.jsonc" "${BACKUP_REPO}/profiles/work/opencode.jsonc" "${BACKUP_REPO}/profiles/personal/opencode.jsonc" "${BACKUP_REPO}/tools/agent-consult.ts" "${BACKUP_REPO}/commands/spec.md"; do
+  if [ -f "${file}" ]; then
+    sed -i "s|${HOME}|__HOME__|g" "${file}"
+  fi
+done
+
+# Reconstruir symlinks relativos de agents (los del config local son absolutos)
+rm -f "${BACKUP_REPO}/agents/"*.md
+for lib_file in "${BACKUP_REPO}/agents-library/"*/*.md; do
+  [ -f "${lib_file}" ] || continue
+  name=$(basename "${lib_file}")
+  category=$(basename "$(dirname "${lib_file}")")
+  ln -s "../agents-library/${category}/${name}" "${BACKUP_REPO}/agents/${name}"
+done
+
+# Excluir skills y AGENTS.md del cleanup (estan fuera de config/)
+for skip in "skills" "AGENTS.md"; do
+  # Proteger estos archivos del cleanup loop
+  :
+done
+
+if [ -n "$(git status --porcelain)" ]; then
+  git add -A
+  git commit -m "Auto-backup ${TIMESTAMP}"
+  git push origin main 2>/dev/null || echo "[${TIMESTAMP}] Push falló — backup local intacto"
+  echo "[${TIMESTAMP}] Backup realizado y commiteado"
+else
+  echo "[${TIMESTAMP}] Sin cambios — backup no necesario"
+fi
