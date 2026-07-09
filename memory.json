@@ -169,6 +169,13 @@
       "source": "agent",
       "created": "2026-07-03T16:24:59.656Z",
       "accessed": "2026-07-03T16:24:59.656Z"
+    },
+    {
+      "id": "m1783543422300_1",
+      "content": "Pbot: cambios institucionales deben documentarse en docs/engineering/memoria-tecnica.md cuando toquen runtime crítico; no crear RiskManager paralelo, usar risk_policy/risk_engine existentes.",
+      "source": "agent",
+      "created": "2026-07-08T20:43:42.300Z",
+      "accessed": "2026-07-08T20:43:42.300Z"
     }
   ]
 }
