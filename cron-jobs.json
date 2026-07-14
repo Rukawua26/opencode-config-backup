@@ -17,6 +17,12 @@
       "prompt": "Revisa mis issues de GitHub abiertos y dame un resumen ejecutivo",
       "interval_minutes": 10080,
       "timeout_seconds": 180
+    },
+    {
+      "name": "Weekly Obsidian inbox triage",
+      "prompt": "Revisa ~/docs/inbox usando el skill inbox-triage. No muevas ni elimines archivos: presenta una tabla con nota, destino sugerido y accion, y recuerda usar ~/docs/templates/weekly-review.md.",
+      "interval_minutes": 10080,
+      "timeout_seconds": 180
     }
   ]
 }

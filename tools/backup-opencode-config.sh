@@ -27,7 +27,7 @@ done
 for item in "${BACKUP_REPO}"/*; do
   name=$(basename "${item}")
   case "${name}" in
-    .git|.gitignore|README.md|install.sh|package-lock.json|package.json|memory.json|kanban.json|.env.example) continue ;;
+    .git|.gitignore|README.md|install.sh|package-lock.json|package.json|memory.json|kanban.json|.env.example|docs) continue ;;
   esac
   if [ ! -e "${CONFIG_DIR}/${name}" ]; then
     rm -rf "${item}"
@@ -55,6 +55,14 @@ TOOLS_SRC="${HOME}/tools"
 if [ -d "${TOOLS_SRC}" ]; then
   rm -rf "${BACKUP_REPO}/tools" 2>/dev/null || true
   cp -r "${TOOLS_SRC}" "${BACKUP_REPO}/tools"
+fi
+
+# Sync de la documentación OpenCode mantenida en el vault Obsidian.
+OPENCODE_DOCS_SRC="${HOME}/docs/opencode"
+OPENCODE_DOCS_DST="${BACKUP_REPO}/docs/opencode"
+if [ -d "${OPENCODE_DOCS_SRC}" ]; then
+  mkdir -p "${OPENCODE_DOCS_DST}"
+  cp -a "${OPENCODE_DOCS_SRC}/." "${OPENCODE_DOCS_DST}/"
 fi
 
 # Sync spec/constitution

@@ -61,5 +61,14 @@
     "status": "done",
     "created": "2026-06-18T21:45:53.507Z",
     "updated": "2026-06-18T21:46:03.123Z"
+  },
+  {
+    "id": "t1783980761956_1",
+    "title": "Viernes 10AM: Weekly Review — vaciar inbox y mantener vault",
+    "description": "Ritual semanal: abrir templates/weekly-review.md, triaje de inbox con @obsidian-markdown, revisar notas huérfanas, tags pendientes, wikilinks rotos, kanban, y mantenimiento (agentes, canvases, backup config).",
+    "priority": "high",
+    "status": "todo",
+    "created": "2026-07-13T22:12:41.956Z",
+    "updated": "2026-07-13T22:12:41.956Z"
   }
 ]

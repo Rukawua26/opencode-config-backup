@@ -13,6 +13,13 @@
       "source": "agent",
       "created": "2026-06-12T00:29:46.700Z",
       "accessed": "2026-06-12T00:31:01.818Z"
+    },
+    {
+      "id": "m1783981273571_1",
+      "content": "Para revisiones de ~/docs/inbox, usar siempre ~/docs/templates/weekly-review.md y no mover ni eliminar archivos durante el triaje.",
+      "source": "agent",
+      "created": "2026-07-13T22:21:13.571Z",
+      "accessed": "2026-07-13T22:21:13.571Z"
     }
   ],
   "memory": [
