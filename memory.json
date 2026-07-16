@@ -183,6 +183,13 @@
       "source": "agent",
       "created": "2026-07-08T20:43:42.300Z",
       "accessed": "2026-07-08T20:43:42.300Z"
+    },
+    {
+      "id": "m1784136302884_1",
+      "content": "agente_empleo: multi-platform job search bot con 7 plataformas (LinkedIn, InfoJobs, Computrabajo, Indeed, Tecnoempleo, RemoteOK, WeWorkRemotely). Usa undetected-chromedriver para anti-bloqueo. JobScorer LLM puntea ofertas 0-100 vs CV. HistoryTracker trackea ofertas vistas. Scheduler daemon cada X horas. 91 tests passing. Selectores InfoJobs+Indeed+Computrabajo verificados contra sites reales. Tecnoempleo bloqueado por Cloudflare.",
+      "source": "agent",
+      "created": "2026-07-15T17:25:02.884Z",
+      "accessed": "2026-07-15T17:25:02.884Z"
     }
   ]
 }
