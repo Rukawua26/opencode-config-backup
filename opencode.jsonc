@@ -51,7 +51,7 @@
         "--user-data-dir",
         "__HOME__/GHL/data/mcp-browser-profile"
       ],
-      "enabled": true
+      "enabled": false
     }
   }
 }
