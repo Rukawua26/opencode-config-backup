@@ -1,3 +1,8 @@
+---
+name: sdd-tasks
+description: Break an approved SDD plan into ordered, verifiable implementation tasks scoped to the active feature.
+---
+
 # SDD Tasks
 
 Divide un plan tecnico SDD en tareas atomicas, ordenadas y verificables.

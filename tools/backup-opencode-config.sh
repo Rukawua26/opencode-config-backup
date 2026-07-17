@@ -27,7 +27,7 @@ done
 for item in "${BACKUP_REPO}"/*; do
   name=$(basename "${item}")
   case "${name}" in
-    .git|.gitignore|README.md|install.sh|package-lock.json|package.json|memory.json|kanban.json|.env.example|docs) continue ;;
+    .git|.gitignore|README.md|install.sh|package-lock.json|package.json|memory.db|kanban.json|.env.example|docs) continue ;;
   esac
   if [ ! -e "${CONFIG_DIR}/${name}" ]; then
     rm -rf "${item}"
@@ -47,7 +47,10 @@ if [ -f "${AGENTS_SRC}" ]; then
   cp "${AGENTS_SRC}" "${BACKUP_REPO}/AGENTS.md" 2>/dev/null || true
 fi
 
-cp "${HOME}/.local/share/opencode/plugins-data/memory.json" "${BACKUP_REPO}/memory.json" 2>/dev/null || true
+MEMORY_DB="${HOME}/.local/share/opencode/plugins-data/memory.db"
+if [ -f "${MEMORY_DB}" ]; then
+  sqlite3 "${MEMORY_DB}" ".backup '${BACKUP_REPO}/memory.db'"
+fi
 cp "${HOME}/.local/share/opencode/plugins-data/kanban.json" "${BACKUP_REPO}/kanban.json" 2>/dev/null || true
 
 # Sync tools directory

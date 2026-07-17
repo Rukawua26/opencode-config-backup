@@ -1,3 +1,8 @@
+---
+name: sdd-plan
+description: Produce a technical implementation plan from an approved project-local feature specification without changing code.
+---
+
 # SDD Plan
 
 Convierte una especificacion existente en un plan tecnico local al proyecto actual.

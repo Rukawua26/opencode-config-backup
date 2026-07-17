@@ -4,15 +4,11 @@
   "compaction": {
     "auto": true,
     "prune": true,
-    "tail_turns": 3,
-    "truncation_policy": {
-      "mode": "tokens",
-      "limit": 32000
-    }
+    "tail_turns": 4
   },
-  "tool_output": { "max_lines": 100, "max_bytes": 4096 },
+  "tool_output": { "max_lines": 120, "max_bytes": 8192 },
   "plugin": [
-    "__HOME__/.config/opencode/plugins/memory.js",
+    "__HOME__/.config/opencode/plugins/memory-v2.js",
     "__HOME__/.config/opencode/plugins/personalities.js",
     "__HOME__/.config/opencode/plugins/guardrails.js",
     "__HOME__/.config/opencode/plugins/checkpoints.js",

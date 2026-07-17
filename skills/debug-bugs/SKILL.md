@@ -1,3 +1,8 @@
+---
+name: debug-bugs
+description: Diagnose and fix software bugs through reproduction, evidence gathering, root-cause analysis, minimal changes, and regression verification.
+---
+
 # Debug: Cazar Bugs Imposibles
 
 Protocolo estructurado para bugs intermitentes/complejos.

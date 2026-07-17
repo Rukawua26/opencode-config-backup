@@ -1,3 +1,8 @@
+---
+name: verification-loop
+description: Verify implementation results with focused tests, diffs, and acceptance criteria. Use after code changes or before reporting completion.
+---
+
 # Verification Loop
 
 Ejecuta verificacion completa del estado del proyecto despues de cambios.

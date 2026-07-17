@@ -70,5 +70,14 @@
     "status": "todo",
     "created": "2026-07-13T22:12:41.956Z",
     "updated": "2026-07-13T22:12:41.956Z"
+  },
+  {
+    "id": "t1784249973327_1",
+    "title": "Dashboard de listas inteligentes",
+    "description": "Crear nuevo dashboard GHL con métricas semanales y mensuales de contactos, conversiones, origen y listas inteligentes.",
+    "priority": "high",
+    "status": "todo",
+    "created": "2026-07-17T00:59:33.327Z",
+    "updated": "2026-07-17T00:59:33.327Z"
   }
 ]

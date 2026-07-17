@@ -1,3 +1,8 @@
+---
+name: project-context-refresh
+description: Refresh and verify targeted project context before coding. Use when starting work in a project, after significant changes, or when existing summaries may be stale.
+---
+
 # Project Context Refresh
 
 Refresca y verifica el contexto del proyecto antes de empezar a trabajar.

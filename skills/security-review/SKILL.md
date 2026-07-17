@@ -1,3 +1,8 @@
+---
+name: security-review
+description: Review application changes for concrete security vulnerabilities, exposed secrets, unsafe data flows, and missing security tests.
+---
+
 # Security Review
 
 Checklist de seguridad para codigo que maneje auth, APIs, inputs de usuario, archivos, secretos, pagos o datos sensibles.

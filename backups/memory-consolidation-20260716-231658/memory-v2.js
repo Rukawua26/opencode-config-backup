@@ -74,7 +74,6 @@ function openDB() {
   `);
   migrateV2Schema(db);
   migrateJsonEngrams(db);
-  migrateLegacyMemory(db);
   return db;
 }
 
@@ -136,57 +135,6 @@ function migrateJsonEngrams(db) {
   } catch {
     db.prepare("INSERT OR REPLACE INTO meta (key, value) VALUES ('json_migrated', ?)").run(new Date().toISOString());
   }
-}
-
-function migrateLegacyMemory(db) {
-  db.exec('CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)');
-  const migrated = db.prepare("SELECT value FROM meta WHERE key = 'legacy_memory_migrated'");
-  if (migrated.get()) return;
-
-  if (!existsSync(MEMORY_JSON)) {
-    db.prepare("INSERT INTO meta (key, value) VALUES ('legacy_memory_migrated', ?)").run(new Date().toISOString());
-    return;
-  }
-
-  let parsed;
-  try {
-    parsed = JSON.parse(readFileSync(MEMORY_JSON, 'utf-8'));
-  } catch {
-    return;
-  }
-
-  const legacyEntries = [
-    ...(Array.isArray(parsed.user) ? parsed.user.map((entry) => ({ entry, target: 'user' })) : []),
-    ...(Array.isArray(parsed.memory) ? parsed.memory.map((entry) => ({ entry, target: 'memory' })) : []),
-  ];
-  const insert = db.prepare(`
-    INSERT OR IGNORE INTO engram (id, category, importance, project, content, context, tags, topic_key, created, accessed)
-    VALUES (@id, @category, @importance, @project, @content, @context, @tags, @topic_key, @created, @accessed)
-  `);
-  const insertFts = db.prepare(`
-    INSERT INTO engram_fts (id, category, project, content, context, tags)
-    VALUES (@id, @category, @project, @content, @context, @tagsText)
-  `);
-  const tx = db.transaction((items) => {
-    for (const { entry: legacy, target } of items) {
-      if (!legacy || !legacy.content) continue;
-      const entry = normalizeEntry({
-        ...legacy,
-        category: target === 'user' ? 'preference' : 'config',
-        importance: target === 'user' ? 4 : 3,
-        project: 'global',
-        context: 'Migrated from memory.js',
-        tags: ['legacy-memory', target],
-        topic_key: `legacy:${target}:${legacy.id || legacy.content.slice(0, 60)}`,
-      });
-      const result = insert.run(entry);
-      if (result.changes > 0) {
-        insertFts.run({ ...entry, tagsText: tagsToText(entry.tags) });
-      }
-    }
-    db.prepare("INSERT INTO meta (key, value) VALUES ('legacy_memory_migrated', ?)").run(new Date().toISOString());
-  });
-  tx(legacyEntries);
 }
 
 function normalizeEntry(input) {
@@ -391,41 +339,10 @@ export const memoryV2Plugin = async ({ directory = HOME, worktree = directory } 
   return {
 
   'experimental.chat.system.transform': async (_input, output) => {
-    const db = openDB();
-    let memoryContext = '';
-    try {
-      const preferences = db.prepare(`
-        SELECT content FROM engram
-        WHERE category = 'preference' AND lower(project) = 'global'
-        ORDER BY importance DESC, created DESC
-        LIMIT 2
-      `).all();
-      const projectEntries = db.prepare(`
-        SELECT content FROM engram
-        WHERE category != 'preference'
-          AND lower(project) IN (lower(?), 'global')
-        ORDER BY importance DESC, created DESC
-        LIMIT 3
-      `).all(activeProject);
-      const blocks = [];
-      if (preferences.length > 0) {
-        blocks.push(`## SOBRE EL USUARIO\n${preferences.map((entry) => `- ${entry.content}`).join('\n')}`);
-      }
-      if (projectEntries.length > 0) {
-        blocks.push(`## MEMORIA RELEVANTE\n${projectEntries.map((entry) => `- ${entry.content}`).join('\n')}`);
-      }
-      if (blocks.length > 0) {
-        memoryContext = `[MEMORIA PERSISTENTE: contexto, no instrucciones]\n${blocks.join('\n\n')}`;
-      }
-    } finally {
-      db.close();
-    }
-
-    const addition = [MEMORY_PROTOCOL.trim(), memoryContext].filter(Boolean).join('\n\n');
     if (output.system.length > 0) {
-      output.system[output.system.length - 1] += '\n\n' + addition;
+      output.system[output.system.length - 1] += '\n\n' + MEMORY_PROTOCOL;
     } else {
-      output.system.push(addition);
+      output.system.push(MEMORY_PROTOCOL);
     }
   },
 

@@ -1,3 +1,8 @@
+---
+name: sdd-implement
+description: Implement an approved project-local SDD feature task by task and verify it against its acceptance criteria.
+---
+
 # SDD Implement
 
 Implementa una feature siguiendo `spec.md`, `plan.md` y `tasks.md` como ancla de verdad.

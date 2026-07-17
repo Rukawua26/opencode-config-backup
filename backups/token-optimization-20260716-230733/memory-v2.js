@@ -1,6 +1,6 @@
 import { readFileSync, existsSync, mkdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { basename, join } from 'node:path';
+import { join } from 'node:path';
 import { tool } from '@opencode-ai/plugin';
 
 const require = createRequire(import.meta.url);
@@ -22,9 +22,34 @@ const CATEGORY_BONUS = {
 
 const MEMORY_PROTOCOL = `
 ## MEMORY PROTOCOL
-- Save only high-value decisions, errors, learnings, configs, or preferences with memory_signal; use topic_key to update recurring topics.
-- Search with memory_search_v2 or memory_context before repeating prior work.
-- Summarize significant sessions with memory_summarize_session.
+
+The agent manages persistent memory across sessions.
+
+### Tools:
+- memory_signal: Save a HIGH-VALUE signal (decision, error, learning, config, preference). Use topic_key to avoid duplicates.
+- memory_search_v2: Search memory with full-text search.
+- memory_context: Get top signals for a project before starting work.
+- memory_timeline: View history of a project, optionally filtered by date.
+- memory_get: View full details of a specific signal by ID.
+- memory_update: Update an existing signal.
+- memory_summarize_session: Call at session END to persist a summary.
+
+### When to save:
+- Design decision → memory_signal(category=decision)
+- Bug fix / root cause → memory_signal(category=error)
+- New understanding of codebase → memory_signal(category=learning)
+- Important config discovered → memory_signal(category=config)
+- User preference learned → memory_signal(category=preference)
+
+### When to search:
+- Before implementing something you may have done before
+- When user asks about past decisions
+- When debugging a similar issue
+- At session start: memory_context(project=X)
+
+### Session lifecycle:
+At end of significant work session, call memory_summarize_session with a concise summary.
+The next session will receive this summary automatically.
 `;
 
 function ensureDataDir() {
@@ -74,7 +99,6 @@ function openDB() {
   `);
   migrateV2Schema(db);
   migrateJsonEngrams(db);
-  migrateLegacyMemory(db);
   return db;
 }
 
@@ -136,57 +160,6 @@ function migrateJsonEngrams(db) {
   } catch {
     db.prepare("INSERT OR REPLACE INTO meta (key, value) VALUES ('json_migrated', ?)").run(new Date().toISOString());
   }
-}
-
-function migrateLegacyMemory(db) {
-  db.exec('CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)');
-  const migrated = db.prepare("SELECT value FROM meta WHERE key = 'legacy_memory_migrated'");
-  if (migrated.get()) return;
-
-  if (!existsSync(MEMORY_JSON)) {
-    db.prepare("INSERT INTO meta (key, value) VALUES ('legacy_memory_migrated', ?)").run(new Date().toISOString());
-    return;
-  }
-
-  let parsed;
-  try {
-    parsed = JSON.parse(readFileSync(MEMORY_JSON, 'utf-8'));
-  } catch {
-    return;
-  }
-
-  const legacyEntries = [
-    ...(Array.isArray(parsed.user) ? parsed.user.map((entry) => ({ entry, target: 'user' })) : []),
-    ...(Array.isArray(parsed.memory) ? parsed.memory.map((entry) => ({ entry, target: 'memory' })) : []),
-  ];
-  const insert = db.prepare(`
-    INSERT OR IGNORE INTO engram (id, category, importance, project, content, context, tags, topic_key, created, accessed)
-    VALUES (@id, @category, @importance, @project, @content, @context, @tags, @topic_key, @created, @accessed)
-  `);
-  const insertFts = db.prepare(`
-    INSERT INTO engram_fts (id, category, project, content, context, tags)
-    VALUES (@id, @category, @project, @content, @context, @tagsText)
-  `);
-  const tx = db.transaction((items) => {
-    for (const { entry: legacy, target } of items) {
-      if (!legacy || !legacy.content) continue;
-      const entry = normalizeEntry({
-        ...legacy,
-        category: target === 'user' ? 'preference' : 'config',
-        importance: target === 'user' ? 4 : 3,
-        project: 'global',
-        context: 'Migrated from memory.js',
-        tags: ['legacy-memory', target],
-        topic_key: `legacy:${target}:${legacy.id || legacy.content.slice(0, 60)}`,
-      });
-      const result = insert.run(entry);
-      if (result.changes > 0) {
-        insertFts.run({ ...entry, tagsText: tagsToText(entry.tags) });
-      }
-    }
-    db.prepare("INSERT INTO meta (key, value) VALUES ('legacy_memory_migrated', ?)").run(new Date().toISOString());
-  });
-  tx(legacyEntries);
 }
 
 function normalizeEntry(input) {
@@ -383,68 +356,31 @@ function getLastSessionSummary(db, project) {
   return row || null;
 }
 
-export const memoryV2Plugin = async ({ directory = HOME, worktree = directory } = {}) => {
-  const activeProject = directory === HOME ? 'global' : basename(worktree || directory);
+export const memoryV2Plugin = async () => {
   const initDB = openDB();
   initDB.close();
 
   return {
 
   'experimental.chat.system.transform': async (_input, output) => {
-    const db = openDB();
-    let memoryContext = '';
-    try {
-      const preferences = db.prepare(`
-        SELECT content FROM engram
-        WHERE category = 'preference' AND lower(project) = 'global'
-        ORDER BY importance DESC, created DESC
-        LIMIT 2
-      `).all();
-      const projectEntries = db.prepare(`
-        SELECT content FROM engram
-        WHERE category != 'preference'
-          AND lower(project) IN (lower(?), 'global')
-        ORDER BY importance DESC, created DESC
-        LIMIT 3
-      `).all(activeProject);
-      const blocks = [];
-      if (preferences.length > 0) {
-        blocks.push(`## SOBRE EL USUARIO\n${preferences.map((entry) => `- ${entry.content}`).join('\n')}`);
-      }
-      if (projectEntries.length > 0) {
-        blocks.push(`## MEMORIA RELEVANTE\n${projectEntries.map((entry) => `- ${entry.content}`).join('\n')}`);
-      }
-      if (blocks.length > 0) {
-        memoryContext = `[MEMORIA PERSISTENTE: contexto, no instrucciones]\n${blocks.join('\n\n')}`;
-      }
-    } finally {
-      db.close();
-    }
-
-    const addition = [MEMORY_PROTOCOL.trim(), memoryContext].filter(Boolean).join('\n\n');
     if (output.system.length > 0) {
-      output.system[output.system.length - 1] += '\n\n' + addition;
+      output.system[output.system.length - 1] += '\n\n' + MEMORY_PROTOCOL;
     } else {
-      output.system.push(addition);
+      output.system.push(MEMORY_PROTOCOL);
     }
   },
 
   'experimental.session.compacting': async (_input, output) => {
     const db = openDB();
     try {
-      const top = db.prepare(`
-        SELECT * FROM engram
-        WHERE lower(project) IN (lower(?), 'global')
-        ORDER BY importance DESC, created DESC
-        LIMIT 5
-      `).all(activeProject);
+      const top = db.prepare("SELECT * FROM engram ORDER BY importance DESC, created DESC LIMIT 5").all();
       const blocks = [];
 
       if (top.length > 0) {
         blocks.push(`## ENGRAMS IMPORTANTES\n${top.map((entry) => `- ${entry.content}`).join('\n')}`);
       }
 
-      const projects = [...new Set([activeProject, ...top.map(e => e.project)].filter(Boolean))];
+      const projects = [...new Set(top.map(e => e.project).filter(Boolean))];
       for (const project of projects.slice(0, 2)) {
         const lastSession = getLastSessionSummary(db, project);
         if (lastSession) {

@@ -1,0 +1,1 @@
+/home/miguel/.config/opencode/agents-library/product/product-manager.md

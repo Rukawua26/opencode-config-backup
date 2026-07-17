@@ -1,0 +1,1 @@
+/home/miguel/.config/opencode/agents-library/engineering/technical-writer.md

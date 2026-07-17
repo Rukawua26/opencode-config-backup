@@ -15,9 +15,10 @@
     "max_bytes": 8192
   },
   "skills": {
-    "paths": ["__HOME__/opencode-custom/skills"]
+    "paths": ["/home/miguel/opencode-custom/skills"]
   },
   "plugin": [
+    "./plugins/memory.js",
     "./plugins/memory-v2.js",
     "./plugins/personalities.js",
     "./plugins/guardrails.js",
@@ -29,7 +30,7 @@
   "mcp": {
     "cheap-llm": {
       "type": "local",
-      "command": ["node", "__HOME__/.config/opencode/mcp/cheap-llm.js"],
+      "command": ["node", "/home/miguel/.config/opencode/mcp/cheap-llm.js"],
       "enabled": true
     },
     "context7": {
@@ -49,7 +50,7 @@
         "-y",
         "@playwright/mcp@latest",
         "--user-data-dir",
-        "__HOME__/GHL/data/mcp-browser-profile"
+        "/home/miguel/GHL/data/mcp-browser-profile"
       ],
       "enabled": true
     }

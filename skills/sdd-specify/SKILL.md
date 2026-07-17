@@ -1,3 +1,8 @@
+---
+name: sdd-specify
+description: Create a project-local feature specification with scope and acceptance criteria before implementing a complex change.
+---
+
 # SDD Specify
 
 Convierte una idea de feature en una especificacion tecnica local al proyecto actual.
