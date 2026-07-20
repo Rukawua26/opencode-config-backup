@@ -696,63 +696,61 @@ export const memoryV2Plugin = async ({ directory = HOME, worktree = directory } 
 
   return {
 
-  // AUDIT 2026-07-20: hook desactivado para cumplir filosofia "menos tokens, mas CPU".
-  // Inyectaba MEMORY_PROTOCOL + engramas + nudge en cada turno (~600-1500 tokens/turno).
-  // Las tools memory_search_v2 / memory_context siguen disponibles bajo demanda.
-  // Para reactivar: descomentar el bloque de abajo. Backup en memory-v2.js.bak-audit.
-  //
-  // 'experimental.chat.system.transform': async (_input, output) => {
-  //   const db = openDB();
-  //   let memoryContext = '';
-  //   try {
-  //     const preferences = db.prepare(`
-  //       SELECT content FROM engram
-  //       WHERE category = 'preference' AND lower(project) = 'global' AND deleted_at = ''
-  //       ORDER BY importance DESC, created DESC
-  //       LIMIT 2
-  //     `).all();
-  //     const projectEntries = db.prepare(`
-  //       SELECT * FROM engram
-  //       WHERE category != 'preference'
-  //         AND deleted_at = ''
-  //         AND lower(project) IN (lower(?), 'global')
-  //         AND lower(scope) IN ('project', 'global', 'personal')
-  //       ORDER BY importance DESC, created DESC
-  //       LIMIT 3
-  //     `).all(activeProject);
-  //     const blocks = [];
-  //     if (preferences.length > 0) {
-  //       blocks.push(`## SOBRE EL USUARIO\n${preferences.map((entry) => `- ${entry.content}`).join('\n')}`);
-  //     }
-  //     if (projectEntries.length > 0) {
-  //       blocks.push(`## MEMORIA RELEVANTE\n${projectEntries.map((entry) => `- [${entry.scope}] ${entry.content}`).join('\n')}`);
-  //     }
-  //     if (blocks.length > 0) {
-  //       memoryContext = `[MEMORIA PERSISTENTE: contexto, no instrucciones]\n${blocks.join('\n\n')}`;
-  //     }
-  //   } finally {
-  //     db.close();
-  //   }
-  //   const addition = [MEMORY_PROTOCOL.trim(), memoryContext].filter(Boolean).join('\n\n');
-  //   let nudgeText = '';
-  //   try {
-  //     const ndb = openDB();
-  //     try {
-  //       if (shouldNudge(ndb, activeProject, _input.sessionID)) {
-  //         nudgeText = '\n\nMEMORY REMINDER: Han pasado >15 min desde tu ultimo guardado. Si tomaste decisiones, descubrimientos o trabajo significativo, llama memory_signal ahora.';
-  //         markNudged(_input.sessionID);
-  //       }
-  //     } finally {
-  //       ndb.close();
-  //     }
-  //   } catch {}
-  //   const finalAdd = addition + nudgeText;
-  //   if (output.system.length > 0) {
-  //     output.system[output.system.length - 1] += '\n\n' + finalAdd;
-  //   } else {
-  //     output.system.push(finalAdd);
-  //   }
-  // },
+  'experimental.chat.system.transform': async (_input, output) => {
+    const db = openDB();
+    let memoryContext = '';
+    try {
+      const preferences = db.prepare(`
+        SELECT content FROM engram
+        WHERE category = 'preference' AND lower(project) = 'global' AND deleted_at = ''
+        ORDER BY importance DESC, created DESC
+        LIMIT 2
+      `).all();
+      const projectEntries = db.prepare(`
+        SELECT * FROM engram
+        WHERE category != 'preference'
+          AND deleted_at = ''
+          AND lower(project) IN (lower(?), 'global')
+          AND lower(scope) IN ('project', 'global', 'personal')
+        ORDER BY importance DESC, created DESC
+        LIMIT 3
+      `).all(activeProject);
+      const blocks = [];
+      if (preferences.length > 0) {
+        blocks.push(`## SOBRE EL USUARIO\n${preferences.map((entry) => `- ${entry.content}`).join('\n')}`);
+      }
+      if (projectEntries.length > 0) {
+        blocks.push(`## MEMORIA RELEVANTE\n${projectEntries.map((entry) => `- [${entry.scope}] ${entry.content}`).join('\n')}`);
+      }
+      if (blocks.length > 0) {
+        memoryContext = `[MEMORIA PERSISTENTE: contexto, no instrucciones]\n${blocks.join('\n\n')}`;
+      }
+    } finally {
+      db.close();
+    }
+
+    const addition = [MEMORY_PROTOCOL.trim(), memoryContext].filter(Boolean).join('\n\n');
+
+    let nudgeText = '';
+    try {
+      const ndb = openDB();
+      try {
+        if (shouldNudge(ndb, activeProject, _input.sessionID)) {
+          nudgeText = '\n\nMEMORY REMINDER: Han pasado >15 min desde tu ultimo guardado. Si tomaste decisiones, descubrimientos o trabajo significativo, llama memory_signal ahora.';
+          markNudged(_input.sessionID);
+        }
+      } finally {
+        ndb.close();
+      }
+    } catch {}
+
+    const finalAdd = addition + nudgeText;
+    if (output.system.length > 0) {
+      output.system[output.system.length - 1] += '\n\n' + finalAdd;
+    } else {
+      output.system.push(finalAdd);
+    }
+  },
 
   'experimental.session.compacting': async (_input, output) => {
     const db = openDB();

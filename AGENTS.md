@@ -57,8 +57,7 @@
 - Invocar en OpenCode: `@nombre-del-agente`
 
 ## Plugins activos (todos en ~/.config/opencode/plugins/)
-- memory.js — memoria persistente (tools: memory_add/search/forget)
-- memory-v2.js — engramas SQLite/FTS5 de alto valor (tools: memory_signal/memory_search_v2/memory_context)
+- memory-v2.js — engramas SQLite/FTS5 (tools: memory_signal/memory_search_v2/memory_context). Hook system.transform desactivado 2026-07-20: invocar bajo demanda.
 - personalities.js — personalidades vía SOUL.md (tool: set_personality)
 - guardrails.js — anti-loop y detección de errores
 - checkpoints.js — snapshots automáticos antes de edit/write
@@ -70,6 +69,7 @@
 - cheap-llm (Gemini Flash Lite — tool: summarize)
 - context7 (docs actualizadas de librerías — tools: resolve-library-id/get-library-docs)
 - diagram-generator (Draw.io/Mermaid/Excalidraw — tool: generate_diagram)
+- playwright (browser automation — deshabilitado por defecto en opencode.jsonc)
 
 # Reglas para Diagramas de Arquitectura
 - Cuando se cree una funcionalidad compleja, genera un diagrama explicativo en `/docs/architecture/`.
