@@ -79,5 +79,23 @@
     "status": "todo",
     "created": "2026-07-17T00:59:33.327Z",
     "updated": "2026-07-17T00:59:33.327Z"
+  },
+  {
+    "id": "t1784584503030_1",
+    "title": "Integrar README y evidencia SDD de JavaScript",
+    "description": "Actualizar README raíz, feature 002 y comandos genéricos de CONTRIBUTING; ejecutar verificación enfocada.",
+    "priority": "medium",
+    "status": "todo",
+    "created": "2026-07-20T21:55:03.030Z",
+    "updated": "2026-07-20T21:55:03.030Z"
+  },
+  {
+    "id": "t1784589086721_2",
+    "title": "Implementar feature 003 Java Language",
+    "description": "Actualizar contrato SDD, crear 26 temas y ejemplos Java 21, checker y documentación; verificar con checker, validate.py, lookups y tests Python.",
+    "priority": "high",
+    "status": "todo",
+    "created": "2026-07-20T23:11:26.721Z",
+    "updated": "2026-07-20T23:11:26.722Z"
   }
 ]

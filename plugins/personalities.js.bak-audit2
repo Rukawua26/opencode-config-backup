@@ -28,16 +28,12 @@ function writeSOUL(content) {
 
 export const personalityPlugin = async () => {
   return {
-    // AUDIT 2026-07-20: hook system.transform desactivado para cumplir filosofia "menos tokens, mas CPU".
-    // Inyectaba SOUL.md en cada turno (~200-400 tokens/turno).
-    // Tool set_personality sigue disponible bajo demanda.
-    //
-    // "experimental.chat.system.transform": async (_input, output) => {
-    //   const soul = loadSOUL();
-    //   if (soul) {
-    //     output.system.push(soul);
-    //   }
-    // },
+    "experimental.chat.system.transform": async (_input, output) => {
+      const soul = loadSOUL();
+      if (soul) {
+        output.system.push(soul);
+      }
+    },
 
     tool: {
       set_personality: tool({

@@ -52,3 +52,5 @@ CAUSA RAÍZ: ...
 SOLUCIÓN: <cambio mínimo>
 VALIDACIÓN: bug no reproducible + tests OK
 ```
+
+> **Nota**: Incluye verificación post-fix (antes skill `verification-loop` separada): tras la solución, ejecuta tests enfocados, diffs y criterios de aceptación antes de reportar completado.

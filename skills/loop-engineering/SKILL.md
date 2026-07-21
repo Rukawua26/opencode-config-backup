@@ -51,13 +51,7 @@ Activa esta skill cuando:
 
 ## TDD Integrado
 
-Cuando el plan o usuario pida TDD:
-
-- RED: escribe test que falla por la razon esperada.
-- GREEN: implementa lo minimo para pasar.
-- TRIANGULATE: agrega caso borde si la solucion es demasiado especifica.
-- REFACTOR: limpia sin cambiar comportamiento.
-- VERIFY: ejecuta suite relevante y registra evidencia.
+Si se requiere TDD, ver las etapas RED/GREEN/TRIANGULATE/REFACTOR/VERIFY en la skill `tdd-workflow`.
 
 ## Condiciones De Salida
 

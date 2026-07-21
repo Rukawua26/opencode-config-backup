@@ -15,7 +15,7 @@ Activa esta skill cuando:
 
 - El usuario pida review.
 - Haya cambios en `core/`, `server/`, `api`, auth, config o infra.
-- El cambio incluya migraciones, contratos, riesgo financiero o datos sensibles.
+- El cambio incluya migraciones, contratos, riesgo financiero, nuevos endpoints, file uploads o cambios en integraciones externas.
 
 ## Checklist
 

@@ -19,12 +19,11 @@ Checklist de seguridad para codigo que maneje auth, APIs, inputs de usuario, arc
 
 ## Trigger
 
-Activa esta skill cuando:
+Activa esta skill solo cuando el cambio toque:
 
-- Se toquen auth, permisos, tokens, headers, CORS, CSP, cookies o sesiones.
-- Se creen endpoints, webhooks, file uploads o integraciones externas.
-- Se manipulen secretos, `.env`, datos sensibles, pagos o credenciales.
-- El usuario pida una revision de seguridad o aparezca una posible vulnerabilidad.
+- auth, permisos, tokens, sesiones, CORS, CSP, cookies, credenciales
+- secretos, `.env`, datos sensibles, pagos, billing, encriptacion, hashing
+- Una posible vulnerabilidad de seguridad explicita (inyeccion, XSS, CSRF, SSRF, IDOR, path traversal)
 
 ## Checklist
 

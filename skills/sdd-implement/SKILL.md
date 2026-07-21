@@ -81,13 +81,7 @@ Si el plan lo especifica o el usuario lo pide:
 
 ### 2.5 Loop Auto-Correctivo
 
-- Implementa la tarea actual.
-- Ejecuta la verificacion minima definida en `plan.md`.
-- Si falla, corrige dentro del alcance y repite la verificacion.
-- Solo avanza a la siguiente tarea cuando la verificacion relevante pase o el fallo quede documentado como bloqueante.
-- Limite de 3 iteraciones por tarea; si no pasa despues de 3 intentos, documentar como bloqueante en `verify.md` y detenerse.
-- Si el error es de tests, corregir solo lo que falla. No refactorizar para hacer pasar.
-- Si el error es de types/lint/build, corregir y re-verificar hasta que pase.
+Si se necesita iterar, usa la skill `loop-engineering`. Max 3 iteraciones por tarea; tras 3 fallos, documentar como bloqueante en `verify.md`. En tests: corregir solo lo que falla. En types/lint/build: re-verificar hasta pasar.
 
 ### 2.6 Paso Anti-Alucinacion Obligatorio
 
@@ -102,7 +96,7 @@ Antes de marcar una tarea como completa:
 ### 3. Verificar
 
 - Ejecuta checks definidos en `plan.md`.
-- Usa la skill `verification-loop` para verificacion completa cuando aplique.
+- Usa la skill `debug-bugs` para verificacion completa cuando aplique.
 - Si el diff contiene `.tsx`, `.jsx`, `.html` o `.css`, incluye `accessibility-audit` como paso condicional.
 - Registra resultado en `spec/features/<feature>/verify.md`.
 - Incluye una seccion `Verificacion Anti-Alucinacion` en `verify.md` con evidencia de que los cambios coinciden con archivos reales y criterios de aceptacion.
