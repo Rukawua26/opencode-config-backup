@@ -97,5 +97,77 @@
     "status": "todo",
     "created": "2026-07-20T23:11:26.721Z",
     "updated": "2026-07-20T23:11:26.722Z"
+  },
+  {
+    "id": "t1784643840836_1",
+    "title": "Implement Feature 006 SQL checker layer",
+    "description": "Correct Feature 006 scope contract, add PostgreSQL/MySQL production checkers and dependency-free focused tests, run required local verification, update tasks/verify while leaving remote checks pending.",
+    "priority": "high",
+    "status": "done",
+    "created": "2026-07-21T14:24:00.836Z",
+    "updated": "2026-07-21T14:33:59.517Z"
+  },
+  {
+    "id": "t1784644815349_2",
+    "title": "Fix Feature 006 checker review findings",
+    "description": "Harden MySQL errno contracts and database guards, remove fixture USE, add fake dependency-free tests, run full verification, update Feature 006 evidence.",
+    "priority": "high",
+    "status": "done",
+    "created": "2026-07-21T14:40:15.349Z",
+    "updated": "2026-07-21T14:44:37.994Z"
+  },
+  {
+    "id": "t1784645958946_3",
+    "title": "Fix MySQL fixture comment splitter",
+    "description": "Strip full-line MySQL fixture comments before semicolon splitting, add regression, record remote run 29841558712 partial result, and rerun local verification.",
+    "priority": "high",
+    "status": "done",
+    "created": "2026-07-21T14:59:18.946Z",
+    "updated": "2026-07-21T15:29:57.243Z"
+  },
+  {
+    "id": "t1784647275411_1",
+    "title": "Finalizar documentación SQL CI",
+    "description": "Actualizar referencias históricas obsoletas, visibilidad del CI y guía breve de ejecución local para la integración PostgreSQL/MySQL.",
+    "priority": "medium",
+    "status": "done",
+    "created": "2026-07-21T15:21:15.411Z",
+    "updated": "2026-07-21T15:24:01.894Z"
+  },
+  {
+    "id": "t1784648483046_2",
+    "title": "Implementar profesor local Feature 007",
+    "description": "Crear SDD e implementar modos teach, review, diagnose y security, revisión de notas/archivo/stdin, salida Markdown/JSON, tests, documentación y verificación.",
+    "priority": "high",
+    "status": "done",
+    "created": "2026-07-21T15:41:23.046Z",
+    "updated": "2026-07-21T16:09:55.816Z"
+  },
+  {
+    "id": "t1784653907990_3",
+    "title": "Implementar router local de modelos",
+    "description": "Crear MCP para recomendar y consultar qwen coder, qwen chat y phi reasoning; integrar skill/config OpenCode, límites de seguridad, pruebas y recomendación de escalado cloud.",
+    "priority": "high",
+    "status": "done",
+    "created": "2026-07-21T17:11:47.990Z",
+    "updated": "2026-07-21T17:53:08.665Z"
+  },
+  {
+    "id": "t1784657313414_1",
+    "title": "Lazy-start Ollama router",
+    "description": "Ollama starts only on ask_* local model calls, route_model remains recommendation-only, and service stops after 10 idle minutes.",
+    "priority": "high",
+    "status": "done",
+    "created": "2026-07-21T18:08:33.414Z",
+    "updated": "2026-07-21T18:08:42.503Z"
+  },
+  {
+    "id": "t1784658150324_1",
+    "title": "Cerrar mejoras router local",
+    "description": "Timer systemd durable, limpieza cheap-llm y validación completa del router local Ollama.",
+    "priority": "medium",
+    "status": "done",
+    "created": "2026-07-21T18:22:30.324Z",
+    "updated": "2026-07-21T18:22:36.937Z"
   }
 ]

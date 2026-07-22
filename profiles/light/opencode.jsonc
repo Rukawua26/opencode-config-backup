@@ -15,11 +15,6 @@
     "/home/miguel/.config/opencode/plugins/validator.js"
   ],
   "mcp": {
-    "cheap-llm": {
-      "type": "local",
-      "command": ["node", "/home/miguel/.config/opencode/mcp/cheap-llm.js"],
-      "enabled": true
-    },
     "context7": {
       "enabled": false
     },
