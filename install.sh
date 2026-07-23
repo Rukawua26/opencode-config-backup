@@ -19,18 +19,21 @@ if [ -d "${TARGET_DIR}" ]; then
   echo "Backup creado en: ${BACKUP_DIR}"
 fi
 
-# Copiar configuracion principal
-rsync -a \
-  --exclude ".git/" \
-  --exclude "node_modules/" \
-  --exclude ".env" \
-  --exclude "README.md" \
-  --exclude "install.sh" \
-  --exclude "skills/" \
-  "${SOURCE_DIR}/" "${TARGET_DIR}/"
+# Copiar configuracion principal sin depender de rsync.
+mkdir -p "${TARGET_DIR}"
+for item in "${SOURCE_DIR}"/* "${SOURCE_DIR}"/.[!.]* "${SOURCE_DIR}"/..?*; do
+  [ -e "${item}" ] || continue
+  name=$(basename "${item}")
+  case "${name}" in
+    .git|node_modules|.env|README.md|install.sh|skills) continue ;;
+  esac
+  cp -a "${item}" "${TARGET_DIR}/"
+done
 
 # Copiar skills a ~/opencode-custom/skills
-rsync -a --delete "${SOURCE_DIR}/skills/" "${SKILLS_DIR}/"
+rm -rf "${SKILLS_DIR}"
+mkdir -p "$(dirname "${SKILLS_DIR}")"
+cp -a "${SOURCE_DIR}/skills" "${SKILLS_DIR}"
 
 # Copiar AGENTS.md a ~/AGENTS.md
 cp "${SOURCE_DIR}/AGENTS.md" "${HOME}/AGENTS.md"
