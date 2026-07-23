@@ -1,1 +1,0 @@
-../agents-library/gis/solution-engineer.md

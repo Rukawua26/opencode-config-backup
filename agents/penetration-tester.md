@@ -1,1 +1,0 @@
-../agents-library/security/penetration-tester.md

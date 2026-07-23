@@ -1,1 +1,0 @@
-../agents-library/specialized/automation-governance-architect.md

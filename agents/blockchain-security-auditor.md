@@ -1,1 +1,0 @@
-../agents-library/security/blockchain-security-auditor.md

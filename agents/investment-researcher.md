@@ -1,1 +1,0 @@
-../agents-library/finance/investment-researcher.md

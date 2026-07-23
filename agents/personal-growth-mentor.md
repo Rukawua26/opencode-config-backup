@@ -1,1 +1,0 @@
-../agents-library/specialized/personal-growth-mentor.md

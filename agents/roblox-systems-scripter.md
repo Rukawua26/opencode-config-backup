@@ -1,1 +1,0 @@
-../agents-library/game-development/roblox-systems-scripter.md

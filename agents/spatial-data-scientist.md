@@ -1,1 +1,0 @@
-../agents-library/gis/spatial-data-scientist.md

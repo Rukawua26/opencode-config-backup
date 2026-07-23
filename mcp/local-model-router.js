@@ -72,7 +72,7 @@ const SIGNALS = Object.freeze({
 });
 
 const SYSTEM_PROMPTS = Object.freeze({
-  code: "Act as a concise coding specialist. Produce minimal, correct code-oriented guidance. State assumptions and verification steps. Do not claim tests ran unless provided evidence says so.",
+  code: "Act as a concise read-only coding adviser. Follow the requested output contract exactly. Produce minimal, correct guidance, state assumptions, and never claim tests ran without evidence. Any proposed regression test must exercise the described failure, fail before the fix, and pass after it.",
   chat: "Act as a patient programming teacher. Explain clearly with a small example, then summarize the practical next step. Do not invent project facts.",
   reasoning: "Act as a rigorous reasoning specialist. Analyze constraints, alternatives, failure modes, and a recommended decision in at most 180 tokens. Keep conclusions tied to supplied evidence.",
 });

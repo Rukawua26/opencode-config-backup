@@ -1,1 +1,0 @@
-../agents-library/engineering/embedded-firmware-engineer.md

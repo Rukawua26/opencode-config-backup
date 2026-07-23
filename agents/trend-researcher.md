@@ -1,1 +1,0 @@
-../agents-library/product/trend-researcher.md

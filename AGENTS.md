@@ -3,7 +3,7 @@
 - Consult `docs/agent-context/` before reading broad parts of the repo.
 - Use `~/tools/agent_context/query_context.py` for targeted lookups (run `python3 ~/tools/agent_context/query_context.py list` to see projects).
 - Prefer `repo-map.json` and `summaries/` over full-tree reads.
-- Rebuild context when files change.
+- Rebuild context metadata with `python3 ~/tools/agent_context/build_repo_map.py`; use `--check` to detect stale data without writing.
 
 # Spec-Driven Development (SDD)
 
@@ -31,6 +31,9 @@
 - Verificador: subagente que valida resultado con tests, diff y criterios de aceptacion.
 - Cada subagente recibe solo spec, plan, tarea asignada, archivos concretos y comandos de verificacion.
 - Al terminar, el subagente devuelve resumen al coordinador. No mantiene estado.
+- El reporte incluye conclusion, archivos relevantes, comandos, evidencia y dudas; no devuelve volcados extensos de herramientas.
+- Usa `explore` para busqueda local, `scout` para dependencias externas y `Verifier` para validacion independiente.
+- Ningun subagente delega en otro; la profundidad maxima es uno.
 - Limite recomendado: maximo 3 subagentes por feature para evitar deuda cognitiva.
 - No usar multiagentes para cambios simples de un archivo o fixes mecanicos.
 
@@ -57,7 +60,7 @@
 - Invocar en OpenCode: `@nombre-del-agente`
 
 ## Plugins activos (todos en ~/.config/opencode/plugins/)
-- memory-v2.js — engramas SQLite/FTS5 (tools: memory_signal/memory_search_v2/memory_context). Hook system.transform desactivado 2026-07-20: invocar bajo demanda.
+- memory-v2.js — deshabilitado en `plugins-disabled/`: `better-sqlite3` no es compatible con el runtime Bun de OpenCode 1.18.4. No asumir memoria persistente hasta migrarlo.
 - personalities.js — personalidades vía SOUL.md (tool: set_personality)
 - guardrails.js — anti-loop y detección de errores
 - checkpoints.js — snapshots automáticos antes de edit/write
@@ -83,6 +86,7 @@
 - Usa `ask_chat_model` para resumir o explicar contenido local acotado; no envíes secretos ni archivos completos innecesarios.
 - No cargues specs de features que no sean la activa.
 - Si el contexto se satura, usa `/compact` para liberar espacio.
+- Antes de cambiar de sesion o de una compactacion manual importante, usa `/handoff` para conservar decisiones y evidencia.
 - Para tareas de arquitectura, seguridad crítica, producción, pagos, migraciones grandes o mucho contexto usa el modelo cloud completo.
 - Para subtareas locales acotadas usa `route_model`/`ask_best_model`: coder para código mecánico, chat para explicación y phi para lógica. Respeta `route: cloud` salvo petición explícita del usuario.
 - `route_model` no inicia Ollama; solo las tools `ask_*` lo arrancan bajo demanda y programan apagado tras 10 minutos sin uso.

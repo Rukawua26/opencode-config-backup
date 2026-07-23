@@ -1,1 +1,0 @@
-../agents-library/game-development/blender-add-on-engineer.md

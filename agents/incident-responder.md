@@ -1,1 +1,0 @@
-../agents-library/security/incident-responder.md

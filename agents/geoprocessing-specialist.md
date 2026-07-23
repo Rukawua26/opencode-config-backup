@@ -1,1 +1,0 @@
-../agents-library/gis/geoprocessing-specialist.md

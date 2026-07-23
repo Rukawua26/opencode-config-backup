@@ -1,1 +1,0 @@
-../agents-library/gis/drone-reality-mapping-specialist.md

@@ -1,1 +1,0 @@
-../agents-library/engineering/multi-agent-systems-architect.md

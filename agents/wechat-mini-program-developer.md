@@ -1,1 +1,0 @@
-../agents-library/engineering/wechat-mini-program-developer.md

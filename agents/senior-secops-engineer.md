@@ -1,1 +1,0 @@
-../agents-library/security/senior-secops-engineer.md

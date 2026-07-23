@@ -1,1 +1,0 @@
-../agents-library/game-development/godot-gameplay-scripter.md

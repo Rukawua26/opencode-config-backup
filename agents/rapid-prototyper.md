@@ -1,1 +1,0 @@
-../agents-library/engineering/rapid-prototyper.md

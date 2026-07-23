@@ -1,1 +1,0 @@
-../agents-library/specialized/operations-manager.md

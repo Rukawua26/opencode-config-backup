@@ -1,1 +1,0 @@
-../agents-library/engineering/incident-response-commander.md

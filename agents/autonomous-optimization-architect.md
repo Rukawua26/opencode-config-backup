@@ -1,1 +1,0 @@
-../agents-library/engineering/autonomous-optimization-architect.md

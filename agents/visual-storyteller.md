@@ -1,1 +1,0 @@
-../agents-library/design/visual-storyteller.md

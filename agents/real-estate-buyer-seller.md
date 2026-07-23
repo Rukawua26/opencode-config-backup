@@ -1,1 +1,0 @@
-../agents-library/specialized/real-estate-buyer-seller.md

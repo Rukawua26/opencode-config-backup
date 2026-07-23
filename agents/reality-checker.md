@@ -1,1 +1,0 @@
-../agents-library/testing/reality-checker.md

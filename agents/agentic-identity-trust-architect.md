@@ -1,1 +1,0 @@
-../agents-library/specialized/agentic-identity-trust-architect.md

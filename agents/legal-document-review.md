@@ -1,1 +1,0 @@
-../agents-library/specialized/legal-document-review.md

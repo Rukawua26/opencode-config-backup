@@ -1,1 +1,0 @@
-../agents-library/specialized/organizational-psychologist.md

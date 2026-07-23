@@ -1,1 +1,0 @@
-../agents-library/spatial-computing/visionos-spatial-engineer.md

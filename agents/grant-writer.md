@@ -1,1 +1,0 @@
-../agents-library/specialized/grant-writer.md

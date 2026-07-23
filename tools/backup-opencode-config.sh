@@ -76,19 +76,30 @@ if [ -d "${CONSTITUTION_SRC}" ]; then
 fi
 
 # Restaurar portabilidad: __HOME__ en archivos con rutas absolutas
-for file in "${BACKUP_REPO}/opencode.jsonc" "${BACKUP_REPO}/profiles/work/opencode.jsonc" "${BACKUP_REPO}/profiles/personal/opencode.jsonc" "${BACKUP_REPO}/tools/agent-consult.ts" "${BACKUP_REPO}/commands/spec.md"; do
+for file in "${BACKUP_REPO}/opencode.jsonc" "${BACKUP_REPO}/profiles/work/opencode.jsonc" "${BACKUP_REPO}/profiles/personal/opencode.jsonc" "${BACKUP_REPO}/profiles/light/opencode.jsonc" "${BACKUP_REPO}/tools/agent-consult.ts" "${BACKUP_REPO}/commands/spec.md"; do
   if [ -f "${file}" ]; then
     sed -i "s|${HOME}|__HOME__|g" "${file}"
   fi
 done
 
-# Reconstruir symlinks relativos de agents (los del config local son absolutos)
-rm -f "${BACKUP_REPO}/agents/"*.md
-for lib_file in "${BACKUP_REPO}/agents-library/"*/*.md; do
-  [ -f "${lib_file}" ] || continue
-  name=$(basename "${lib_file}")
-  category=$(basename "$(dirname "${lib_file}")")
-  ln -s "../agents-library/${category}/${name}" "${BACKUP_REPO}/agents/${name}"
+# Preservar solo la seleccion activa y convertir sus symlinks absolutos en relativos.
+rm -rf "${BACKUP_REPO}/agents"
+mkdir -p "${BACKUP_REPO}/agents"
+for agent_file in "${CONFIG_DIR}/agents/"*.md; do
+  [ -e "${agent_file}" ] || continue
+  name=$(basename "${agent_file}")
+  if [ -L "${agent_file}" ]; then
+    target=$(readlink -f "${agent_file}")
+    case "${target}" in
+      "${CONFIG_DIR}/agents-library/"*)
+        relative_target=${target#"${CONFIG_DIR}/agents-library/"}
+        ln -s "../agents-library/${relative_target}" "${BACKUP_REPO}/agents/${name}"
+        ;;
+      *) cp -L "${agent_file}" "${BACKUP_REPO}/agents/${name}" ;;
+    esac
+  else
+    cp "${agent_file}" "${BACKUP_REPO}/agents/${name}"
+  fi
 done
 
 # Excluir skills y AGENTS.md del cleanup (estan fuera de config/)

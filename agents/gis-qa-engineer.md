@@ -1,1 +1,0 @@
-../agents-library/gis/gis-qa-engineer.md

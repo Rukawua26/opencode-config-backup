@@ -1,1 +1,0 @@
-../agents-library/specialized/business-strategist.md

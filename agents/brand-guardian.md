@@ -1,1 +1,0 @@
-../agents-library/design/brand-guardian.md

@@ -40,6 +40,7 @@ for file in \
   "${TARGET_DIR}/opencode.jsonc" \
   "${TARGET_DIR}/profiles/work/opencode.jsonc" \
   "${TARGET_DIR}/profiles/personal/opencode.jsonc" \
+  "${TARGET_DIR}/profiles/light/opencode.jsonc" \
   "${TARGET_DIR}/tools/agent-consult.ts" \
   "${TARGET_DIR}/commands/spec.md"; do
   if [ -f "${file}" ]; then
@@ -47,15 +48,19 @@ for file in \
   fi
 done
 
-# Eliminar symlinks rotos y recrear desde agents-library
-rm -f "${TARGET_DIR}/agents/"*.md
-for lib_file in "${TARGET_DIR}/agents-library/"*/*.md; do
-  [ -f "${lib_file}" ] || continue
-  name=$(basename "${lib_file}")
-  category=$(basename "$(dirname "${lib_file}")")
-  ln -s "../agents-library/${category}/${name}" "${TARGET_DIR}/agents/${name}"
+# Los symlinks relativos y agentes regulares se preservan con rsync -a.
+agent_count=0
+for agent_file in "${TARGET_DIR}/agents/"*.md; do
+  [ -e "${agent_file}" ] || {
+    if [ -L "${agent_file}" ]; then
+      echo "ERROR: symlink de agente roto: ${agent_file}"
+      exit 1
+    fi
+    continue
+  }
+  agent_count=$((agent_count + 1))
 done
-echo "Agents reconectados: $(ls "${TARGET_DIR}/agents/"*.md 2>/dev/null | wc -l) symlinks"
+echo "Agentes activos restaurados: ${agent_count}"
 
 # Crear .env si no existe
 if [ ! -f "${TARGET_DIR}/.env" ]; then
@@ -63,8 +68,10 @@ if [ ! -f "${TARGET_DIR}/.env" ]; then
   echo "Se creo ${TARGET_DIR}/.env. Agrega tus API keys antes de usar MCP."
 fi
 
-# Instalar dependencias npm
-if [ -f "${TARGET_DIR}/package-lock.json" ]; then
+# Instalar dependencias npm, salvo en pruebas de restauracion aisladas.
+if [ "${OPENCODE_SKIP_INSTALL:-0}" = "1" ]; then
+  echo "Instalacion npm omitida por OPENCODE_SKIP_INSTALL=1"
+elif [ -f "${TARGET_DIR}/package-lock.json" ]; then
   npm ci --prefix "${TARGET_DIR}"
 else
   npm install --prefix "${TARGET_DIR}"

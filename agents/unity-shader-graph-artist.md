@@ -1,1 +1,0 @@
-../agents-library/game-development/unity-shader-graph-artist.md

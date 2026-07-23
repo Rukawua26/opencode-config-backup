@@ -1,1 +1,0 @@
-../agents-library/marketing/instagram-curator.md

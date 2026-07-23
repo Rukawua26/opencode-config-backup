@@ -1,1 +1,0 @@
-../agents-library/sales/proposal-strategist.md

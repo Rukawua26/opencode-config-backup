@@ -1,1 +1,0 @@
-../agents-library/marketing/book-co-author.md

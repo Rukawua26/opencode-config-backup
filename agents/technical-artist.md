@@ -1,1 +1,0 @@
-../agents-library/game-development/technical-artist.md

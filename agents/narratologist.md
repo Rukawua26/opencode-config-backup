@@ -1,1 +1,0 @@
-../agents-library/academic/narratologist.md

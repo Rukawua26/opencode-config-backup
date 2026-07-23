@@ -1,1 +1,0 @@
-../agents-library/engineering/sre-site-reliability-engineer.md

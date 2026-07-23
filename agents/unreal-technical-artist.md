@@ -1,1 +1,0 @@
-../agents-library/game-development/unreal-technical-artist.md

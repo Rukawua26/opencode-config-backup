@@ -1,1 +1,0 @@
-../agents-library/design/whimsy-injector.md

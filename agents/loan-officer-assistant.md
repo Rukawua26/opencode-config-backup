@@ -1,1 +1,0 @@
-../agents-library/specialized/loan-officer-assistant.md

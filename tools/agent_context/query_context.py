@@ -59,17 +59,17 @@ def search_repo_map(query: str):
         proj = Path(path).name if "/" in path else path
         text = json.dumps(info).lower()
         if query_lower in text:
-            results.append((proj, info.get("summary", "")))
+            results.append((proj, info))
     if not results:
         print(f"No results for '{query}'")
         return
-    for proj, summary in results:
+    for proj, info in results:
         print(f"\n{'='*50}")
         print(f"  {proj}")
         print(f"{'='*50}")
-        print(f"  Summary: {summary}")
-        print(f"  Type: {data.get(path, {}).get('type', '?')}")
-        print(f"  Framework: {data.get(path, {}).get('framework', '?')}")
+        print(f"  Summary: {info.get('summary', '')}")
+        print(f"  Type: {info.get('type', '?')}")
+        print(f"  Framework: {info.get('framework', '?')}")
 
 
 def get_keyfiles(project: str):

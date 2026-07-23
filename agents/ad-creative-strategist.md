@@ -1,1 +1,0 @@
-../agents-library/paid-media/ad-creative-strategist.md

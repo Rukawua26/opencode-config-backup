@@ -1,1 +1,0 @@
-../agents-library/specialized/mcp-builder.md

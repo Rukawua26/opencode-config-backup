@@ -1,1 +1,0 @@
-../agents-library/security/cloud-security-architect.md

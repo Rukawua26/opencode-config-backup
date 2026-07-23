@@ -1,6 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "small_model": "google/gemini-2.5-flash-lite",
+  "small_model": "openai/gpt-5.4-mini",
+  "subagent_depth": 1,
   "experimental": {
     "batch_tool": true,
     "disable_paste_summary": true
@@ -14,17 +15,53 @@
     "max_lines": 200,
     "max_bytes": 8192
   },
+  "attachment": {
+    "image": {
+      "auto_resize": true,
+      "max_width": 1200,
+      "max_height": 1200
+    }
+  },
+  "agent": {
+    "explore": {
+      "model": "openai/gpt-5.4-mini",
+      "steps": 8,
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny"
+      }
+    },
+    "scout": {
+      "model": "openai/gpt-5.4-mini",
+      "steps": 8,
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny"
+      }
+    },
+    "title": {
+      "model": "openai/gpt-5.4-mini"
+    },
+    "summary": {
+      "model": "openai/gpt-5.4-mini"
+    },
+    "compaction": {
+      "model": "openai/gpt-5.6-sol"
+    }
+  },
   "skills": {
     "paths": ["__HOME__/opencode-custom/skills"]
   },
   "plugin": [
-    "./plugins/memory-v2.js",
     "./plugins/personalities.js",
     "./plugins/guardrails.js",
     "./plugins/checkpoints.js",
     "./plugins/kanban.js",
     "./plugins/sandbox.js",
-    "./plugins/validator.js"
+    "./plugins/validator.js",
+    "./plugins/session-metrics.js"
   ],
   "mcp": {
     "local-model-router": {

@@ -1,1 +1,0 @@
-../agents-library/gis/web-gis-developer.md
