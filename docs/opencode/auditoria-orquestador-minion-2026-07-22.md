@@ -60,6 +60,8 @@ El total de prompts bajo 90.2% incluso despues de agregar `Verifier`. Se elimina
 - El perfil `light` esta disponible en `opencode-profile`.
 - El validador solo revisa claves de proveedores usados y ya no alerta por Gemini obsoleto.
 - `memory-v2` se movio a `plugins-disabled/` porque `better-sqlite3` no carga bajo Bun.
+- `better-sqlite3` se retiro de dependencias activas, reduciendo 34 paquetes instalados.
+- El instalador ya no depende de `rsync` y preserva exactamente la seleccion activa.
 
 ## Evidencia
 
@@ -71,6 +73,7 @@ El total de prompts bajo 90.2% incluso despues de agregar `Verifier`. Se elimina
 - `build_repo_map.py --check`: mapa vigente.
 - `opencode debug config`: configuracion cargada sin `ConfigInvalidError`.
 - Ejecucion global con telemetria: `GLOBAL_TELEMETRY_OK` y registro agregado correcto.
+- Restauracion aislada: 16 agentes, cero symlinks rotos, dependencias instaladas y `opencode debug config` aprobado.
 
 ## Limitaciones
 
@@ -80,3 +83,5 @@ El total de prompts bajo 90.2% incluso despues de agregar `Verifier`. Se elimina
 Ollama continua integrado como asesor mediante MCP, no como subagente operativo con herramientas. La prueba inicial fallo al cubrir el caso de regresion y la reevaluacion paso tras reforzar el prompt; una sola muestra no justifica otorgarle herramientas.
 
 Los ahorros indicados son estructurales. El coste monetario real depende de la frecuencia y longitud de las tareas y debe observarse durante el uso normal.
+
+`npm audit` reporta una vulnerabilidad moderada transitiva en `@hono/node-server` usada por `@modelcontextprotocol/sdk@1.29.0`. El advisory afecta `serve-static` en Windows y este entorno es Linux; la correccion ofrecida implica degradar el SDK a 1.24.3, por lo que se conserva la version actual hasta validar compatibilidad.
